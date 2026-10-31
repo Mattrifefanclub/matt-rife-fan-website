@@ -1,103 +1,323 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Fan community, show information and membership enquiries.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101019">
 <title>Matt Rife Fan Community</title>
+<meta name="description" content="An independent fan community celebrating Matt Rife.">
 <style>
-:root{--bg:#090a10;--panel:#151824;--line:#303447;--ink:#f7f7fb;--muted:#b6bac8;--accent:#bda5ff}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,Arial,sans-serif}a{color:inherit}.wrap{width:min(1100px,92%);margin:auto}
-header{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--line);gap:15px}.logo{font-weight:900;letter-spacing:.1em}nav{display:flex;gap:18px;flex-wrap:wrap}nav a{text-decoration:none;color:var(--muted);font-size:.92rem}
-.hero{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;padding:60px 0}.hero img{width:100%;height:520px;object-fit:cover;object-position:center 25%;border-radius:20px;border:1px solid var(--line)}.eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.16em;font-size:.76rem;font-weight:800}.hero h1{font-size:clamp(2.7rem,6vw,5rem);line-height:1.02;margin:14px 0}.muted{color:var(--muted)}.btn{display:inline-block;text-decoration:none;border:0;border-radius:999px;background:var(--accent);color:#171322;font-weight:800;padding:12px 19px;cursor:pointer}.btn.alt{background:transparent;border:1px solid #656b80;color:var(--ink)}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.section{padding:42px 0;border-top:1px solid var(--line)}h2{font-size:2rem;margin:5px 0 12px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:22px}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px}.card h3{margin:0 0 8px}.card p{color:var(--muted);margin:0 0 16px}.tag{display:inline-block;color:var(--accent);font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em}.notice{background:#141724;border:1px solid var(--line);border-radius:13px;padding:15px;color:var(--muted);font-size:.88rem;margin-top:20px}.updates{display:grid;gap:12px;margin-top:18px}.update{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}.update small{color:var(--accent)}footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.85rem;margin-top:30px}
-#admin{display:none;padding:28px 0}.adminbox{background:var(--panel);border:1px solid var(--line);padding:22px;border-radius:16px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:6px;margin:9px 0}.field label{font-size:.86rem;color:var(--muted)}input,textarea{width:100%;padding:11px;border-radius:9px;border:1px solid #41475c;background:#090b12;color:white;font:inherit}textarea{min-height:90px}.hint{font-size:.82rem;color:var(--muted)}.adminrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.linkbutton{background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;padding:12px}
-@media(max-width:740px){header{align-items:flex-start;flex-direction:column}.hero{grid-template-columns:1fr;padding:35px 0}.hero img{height:420px}.cards,.grid{grid-template-columns:1fr}}
-</style></head>
+:root {
+  --bg:#101019;
+  --panel:#191925;
+  --panel2:#202031;
+  --text:#f5f2fa;
+  --muted:#aaa6b9;
+  --accent:#b99aff;
+  --accent2:#8f6de0;
+  --line:#343044;
+  --danger:#ff7777;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;line-height:1.6;
+}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+header{
+  position:sticky;top:0;z-index:10;
+  background:rgba(16,16,25,.96);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(12px);
+}
+.nav{
+  max-width:1100px;margin:auto;padding:15px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:15px;flex-wrap:wrap;
+}
+.brand{font-weight:800;letter-spacing:1px}
+.brand span{color:var(--accent)}
+nav{display:flex;gap:17px;flex-wrap:wrap}
+nav a{font-size:13px;color:var(--muted)}
+nav a:hover{color:var(--accent)}
+.wrap{max-width:1050px;margin:auto;padding:55px 20px}
+.hero{
+  min-height:470px;display:flex;align-items:center;
+  background:linear-gradient(120deg,#171522,#282039);
+  border-bottom:1px solid var(--line);
+}
+.hero-inner{max-width:1050px;margin:auto;padding:65px 25px;width:100%}
+.eyebrow{
+  color:var(--accent);font-size:12px;font-weight:bold;
+  letter-spacing:2px;text-transform:uppercase;
+}
+h1{font-size:clamp(38px,7vw,68px);line-height:1.08;margin:15px 0}
+h2{font-size:30px;margin:0 0 15px}
+h3{margin:0 0 10px}
+p{color:var(--muted)}
+.hero p{max-width:620px;font-size:17px}
+.btn{
+  border:0;border-radius:9px;padding:12px 18px;
+  background:var(--accent);color:#171222;font-weight:800;
+  display:inline-block;margin:8px 7px 0 0;
+}
+.btn:hover{background:#d0bbff}
+.btn.secondary{
+  background:transparent;color:var(--text);
+  border:1px solid var(--line);
+}
+.btn.danger{background:#542b36;color:white}
+.section-heading{margin-bottom:25px}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:17px;
+}
+.card,.adminbox{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:15px;padding:22px;
+}
+.card p{margin-bottom:0}
+.mini{font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:1px}
+.divider{height:1px;background:var(--line);margin:20px 0}
+.notice{
+  border:1px solid var(--line);border-radius:10px;
+  padding:13px 15px;color:var(--muted);font-size:13px;
+}
+.field{margin:14px 0}
+label{display:block;margin-bottom:6px;font-size:13px;color:#d8d1e7}
+input,textarea{
+  width:100%;padding:12px;border-radius:8px;
+  background:#11111b;color:var(--text);
+  border:1px solid var(--line);outline:none;
+}
+input:focus,textarea:focus{border-color:var(--accent)}
+textarea{min-height:100px;resize:vertical}
+.status{font-size:13px;min-height:22px;color:var(--accent)}
+.hidden{display:none!important}
+footer{
+  border-top:1px solid var(--line);
+  padding:30px 20px;text-align:center;
+  background:#0c0c13;
+}
+footer p{font-size:12px}
+.small{font-size:12px}
+.pill{
+  display:inline-block;border:1px solid var(--line);
+  padding:5px 10px;border-radius:30px;
+  color:var(--accent);font-size:11px;
+}
+#adminLogin,#admin,#accountPanel{scroll-margin-top:90px}
+.list-item{
+  padding:14px 0;border-bottom:1px solid var(--line);
+}
+.list-item:last-child{border-bottom:0}
+@media(max-width:600px){
+  .nav{justify-content:center}
+  nav{justify-content:center}
+  .hero{min-height:390px}
+  .wrap{padding:40px 17px}
+  h2{font-size:25px}
+}
+</style>
+</head>
 <body>
-<header class="wrap"><div class="logo">MATT RIFE <span style="color:var(--accent)">FAN COMMUNITY</span></div>
-<nav><a href="#about">About</a><a href="#shows">Shows</a><a href="#membership">Membership</a><a href="#updates">Updates</a></nav></header>
-<main class="wrap">
-<section class="hero"><div><div class="eyebrow">Fan community</div><h1 id="headline">Comedy brings us together.</h1>
-<p class="muted" id="intro">Welcome to a fan community celebrating Matt Rife. Find show information, community updates and ways to enquire about tickets and membership.</p>
-<div class="actions"><a class="btn" href="#shows">Explore shows</a><a class="btn alt" href="#membership">Membership enquiries</a></div>
-<div class="notice"><strong>Fan-site notice:</strong> This website is independently operated by a fan/administrator. It is not the artist’s official website unless separately authorized and approved for that representation. Ticket availability, prices and membership benefits must be confirmed directly before payment.</div></div>
-<img id="portrait" src="assets/fan-page-photo.jpg" alt="Photo supplied for the fan website"></section>
-<section class="section" id="about"><div class="eyebrow">About</div><h2 id="aboutTitle">A home for fans and comedy lovers</h2><p class="muted" id="aboutText">A place to share updates, celebrate comedy and help fans find information about upcoming events. Check verified artist and venue channels for confirmed dates and details.</p></section>
-<section class="section" id="shows"><div class="eyebrow">Live events</div><h2>Show information & ticket enquiries</h2><p class="muted">Browse announcements and contact the administrator to ask about ticket availability. Email the site administrator to enquire about tickets. An email enquiry is not a confirmed booking or proof of payment.</p><div class="cards" id="showCards"><article class="card"><span class="tag">Show announcement</span><h3>Upcoming show details</h3><p>Show date, venue and ticket information will be posted here by the site administrator.</p><a class="btn email-link" data-subject="Show ticket enquiry" href="#">Enquire by email</a></article></div></section>
-<section class="section" id="membership"><div class="eyebrow">Fan membership</div><h2>Join the fan community</h2><p class="muted">Ask about membership options, what is included, pricing and fulfilment before purchasing.</p><div class="cards"><article class="card"><h3>Membership enquiry</h3><p>Message the administrator to request current membership details.</p><a class="btn email-link" data-subject="Fan membership enquiry" href="#">Ask about membership</a></article><article class="card"><h3>Digital card enquiries</h3><p>Ask whether digital membership cards are available and how they are issued.</p><a class="btn alt email-link" data-subject="Digital membership card enquiry" href="#">Enquire about a card</a></article></div></section>
-<section class="section" id="updates"><div class="eyebrow">Newsroom</div><h2>Latest updates</h2><div class="updates" id="updatesList"><article class="update"><small>WELCOME</small><div>Welcome! Show announcements and community updates will appear here.</div></article></div></section>
-</main>
-<footer><div class="wrap">© <span id="year"></span> Matt Rife Fan Community. Independently operated fan website. Purchase and ticket enquiries: <a id="purchaseEmail" href="mailto:lydiaviolet776@gmail.com">lydiaviolet776@gmail.com</a>.</div></footer>
-  <section class="wrap" id="adminLogin" style="display:none;padding:28px 0">
-  <div class="adminbox">
-    <h2>Administrator Login</h2>
-    <div class="field">
-      <label>Email address</label>
-      <input id="adminEmail" type="email">
-    </div>
-    <div class="field">
-      <label>Password</label>
-      <input id="adminPassword" type="password">
-    </div>
-    <button class="btn" id="adminLoginButton">Log in</button>
-    <p id="loginStatus" class="hint"></p>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="#home">MATT RIFE <span>FAN COMMUNITY</span></a>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#shows">Shows</a>
+      <a href="#updates">Updates</a>
+      <a href="#join">Join</a>
+      <a href="#accountPanel">Account</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="eyebrow">An independent fan community</div>
+    <h1 id="headline">Welcome to the Matt Rife Fan Community.</h1>
+    <p id="intro">A place for fans to connect, celebrate comedy, and share their appreciation for Matt Rife.</p>
+    <a class="btn" href="#join">Join the community</a>
+    <a class="btn secondary" href="#updates">Explore updates</a>
   </div>
 </section>
-<section class="wrap" id="admin"><div class="adminbox"><div class="eyebrow">Private site editor</div><h2>Admin dashboard</h2>
-<p class="hint">Demo editor only: edits are saved in this browser on this device. It is not yet a secure online backend. Do not store customer, payment or password information here.</p>
-<div class="grid">
-<div class="field"><label>Purchase enquiry email</label><input id="purchaseEmailInput" type="email" value="lydiaviolet776@gmail.com"></div>
-<div class="field"><label>WhatsApp number (international format, digits only)</label><input id="waNumber" placeholder="e.g. 2348012345678"></div>
-<div class="field"><label>Homepage headline</label><input id="eHeadline"></div>
-<div class="field"><label>Homepage introduction</label><textarea id="eIntro"></textarea></div>
-<div class="field"><label>About heading</label><input id="eAboutTitle"></div>
-<div class="field"><label>About text</label><textarea id="eAboutText"></textarea></div>
-<div class="field"><label>Add a show </main>
-<footer><div class="wrap">© <span id="year"></span> Matt Rife Fan Community. Independently operated fan website. Purchase and ticket enquiries: <a id="purchaseEmail" href="mailto:lydiaviolet776@gmail.com">lydiaviolet776@gmail.com</a>.</div></footer>
-<section class="wrap" id="admin"><div class="adminbox"><div class="eyebrow">Private site editor</div><h2>Admin dashboard</h2>
-<p class="hint">Demo editor only: edits are saved in this browser on this device. It is not yet a secure online backend. Do not store customer, payment or password information here.</p>
-<div class="grid">
-<div class="field"><label>Purchase enquiry email</label><input id="purchaseEmailInput" type="email" value="lydiaviolet776@gmail.com"></div>
-<div class="field"><label>WhatsApp number (international format, digits only)</label><input id="waNumber" placeholder="e.g. 2348012345678"></div>
-<div class="field"><label>Homepage headline</label><input id="eHeadline"></div>
-<div class="field"><label>Homepage introduction</label><textarea id="eIntro"></textarea></div>
-<div class="field"><label>About heading</label><input id="eAboutTitle"></div>
-<div class="field"><label>About text</label><textarea id="eAboutText"></textarea></div>
-<div class="field"><label>Add a show announcement</label><textarea id="eShow" placeholder="Include confirmed date, venue, ticket info and source"></textarea></div>
-<div class="field"><label>Post a fan update</label><textarea id="eUpdate" placeholder="Write your update"></textarea></div>
-<div class="field"><label>Replace homepage photo</label><input id="ePhoto" type="file" accept="image/*"></div>
-</div> id="eShow" placeholder="Include confirmed date, venue, ticket info and source"></textarea></div>
-<div class="field"><label>Post a fan update</label><textarea id="eUpdate" placeholder="Write your update"></textarea></div>
-<div class="field"><label>Replace homepage photo</label><input id="ePhoto" type="file" accept="image/*"></div>
-</div>
-<div class="adminrow"><button class="btn" id="save">Save changes</button><button class="btn alt" id="reset">Reset demo</button></div><p class="hint" id="status" aria-live="polite"></p></div></section>
-<div class="wrap" style="text-align:center;padding:12px 0 30px"><button class="linkbutton" id="toggle">Open admin editor</button></div>
-<script>
-const initial={email:"lydiaviolet776@gmail.com",wa:"",headline:"Comedy brings us together.",intro:"Welcome to a fan community celebrating Matt Rife. Find show information, community updates and ways to enquire about tickets and membership.",aboutTitle:"A home for fans and comedy lovers",aboutText:"A place to share updates, celebrate comedy and help fans find information about upcoming events. Check verified artist and venue channels for confirmed dates and details.",shows:[],updates:["Welcome! Show announcements and community updates will appear here."],photo:"assets/fan-page-photo.jpg"};
-let d;try{d=JSON.parse(localStorage.getItem("mrfanplatform"))||structuredClone(initial)}catch(e){d={...initial}}
-const $=id=>document.getElementById(id);
-function emailUrl(subject){const address=(d.email||"lydiaviolet776@gmail.com").trim();return "mailto:"+address+"?subject="+encodeURIComponent(subject||"Purchase enquiry")}
-function waUrl(message){const n=(d.wa||"").replace(/\\D/g,"");return n?"https://wa.me/"+n+"?text="+encodeURIComponent(message):"#"}
-function render(){
-$("headline").textContent=d.headline;$("intro").textContent=d.intro;$("aboutTitle").textContent=d.aboutTitle;$("aboutText").textContent=d.aboutText;$("portrait").src=d.photo;$("year").textContent=new Date().getFullYear();
-$("purchaseEmail").textContent=d.email||"lydiaviolet776@gmail.com";$("purchaseEmail").href="mailto:"+encodeURIComponent(d.email||"lydiaviolet776@gmail.com");
-document.querySelectorAll(".email-link").forEach(a=>{a.href=emailUrl(a.dataset.subject);});
-document.querySelectorAll(".wa-link").forEach(a=>{a.href=waUrl(a.dataset.message);a.target="_blank";a.rel="noopener";a.onclick=e=>{if(!d.wa){e.preventDefault();alert("The administrator has not added a WhatsApp number yet. Please check back later.")}}});
-const sc=$("showCards");sc.innerHTML="";(d.shows.length?d.shows:[{title:"Upcoming show details",body:"Show date, venue and ticket information will be posted here by the site administrator."}]).forEach(s=>{let c=document.createElement("article");c.className="card";let tag=document.createElement("span");tag.className="tag";tag.textContent="Show announcement";let h=document.createElement("h3");h.textContent=s.title;let p=document.createElement("p");p.textContent=s.body;let a=document.createElement("a");a.className="btn email-link";a.dataset.subject="Ticket enquiry: "+s.title;a.textContent="Enquire by email";a.href=emailUrl(a.dataset.subject);c.append(tag,h,p,a);sc.append(c)});
-const ul=$("updatesList");ul.innerHTML="";d.updates.forEach(u=>{let a=document.createElement("article");a.className="update";let sm=document.createElement("small");sm.textContent="FAN UPDATE";let div=document.createElement("div");div.textContent=u;a.append(sm,div);ul.append(a)});
-}
-function fill(){ $("purchaseEmailInput").value=d.email||"lydiaviolet776@gmail.com";$("waNumber").value=d.wa;$("eHeadline").value=d.headline;$("eIntro").value=d.intro;$("eAboutTitle").value=d.aboutTitle;$("eAboutText").value=d.aboutText}
-$("toggle").onclick=()=>{ $("admin").style.display=$("admin").style.display==="block"?"none":"block";if($("admin").style.display==="block"){fill();$("admin").scrollIntoView({behavior:"smooth"})}};
-$("save").onclick=()=>{
-d.wa=$("waNumber").value.replace(/\\D/g,"");d.headline=$("eHeadline").value.trim();d.intro=$("eIntro").value.trim();d.aboutTitle=$("eAboutTitle").value.trim();d.aboutText=$("eAboutText").value.trim();
-const show=$("eShow").value.trim();if(show){const first=show.split("\\n");d.shows.unshift({title:first[0].slice(0,90),body:show});$("eShow").value=""}
-const update=$("eUpdate").value.trim();if(update){d.updates.unshift(update);$("eUpdate").value=""}
-const file=$("ePhoto").files[0];const finish=()=>{try{localStorage.setItem("mrfanplatform",JSON.stringify(d));$("status").textContent="Saved in this browser. Purchase enquiry buttons open an email to lydiaviolet776@gmail.com."}catch(e){$("status").textContent="Could not save. Try a smaller photo."}render()};
-if(file){const r=new FileReader();r.onload=()=>{d.photo=r.result;finish()};r.readAsDataURL(file)}else finish();
-};
-$("reset").onclick=()=>{d={...initial,shows:[],updates:[...initial.updates]};localStorage.removeItem("mrfanplatform");fill();render();$("status").textContent="Demo reset."};render();
-</script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<section class="wrap" id="about">
+  <div class="section-heading">
+    <div class="eyebrow">Our community</div>
+    <h2 id="aboutTitle">About the community</h2>
+    <p id="aboutText">This independent fan community is for people who enjoy Matt Rife's comedy and want to connect with other fans.</p>
+  </div>
+  <div class="notice">
+    This is an independently operated fan website. It is not Matt Rife's official website and is not affiliated with, endorsed by, or managed by Matt Rife or his representatives.
+  </div>
+</section>
+
+<section class="wrap" id="shows">
+  <div class="section-heading">
+    <div class="eyebrow">Community board</div>
+    <h2>Show announcements</h2>
+    <p>Community information and announcements. Always verify event details and ticket availability through official sources.</p>
+  </div>
+  <div id="showList" class="grid">
+    <div class="card"><p>No announcements have been posted yet.</p></div>
+  </div>
+</section>
+
+<section class="wrap" id="updates">
+  <div class="section-heading">
+    <div class="eyebrow">What's happening</div>
+    <h2>Community updates</h2>
+  </div>
+  <div id="updateList" class="grid">
+    <div class="card"><p>No updates have been posted yet.</p></div>
+  </div>
+</section>
+
+<section class="wrap" id="join">
+  <div class="section-heading">
+    <div class="eyebrow">Become part of it</div>
+    <h2>Join the fan community</h2>
+    <p>Create an account to become part of the community.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <h3>Create your account</h3>
+      <div class="field">
+        <label for="signupName">Full name</label>
+        <input id="signupName" type="text" autocomplete="name" placeholder="Your full name">
+      </div>
+      <div class="field">
+        <label for="signupEmail">Email address</label>
+        <input id="signupEmail" type="email" autocomplete="email" placeholder="Your email">
+      </div>
+      <div class="field">
+        <label for="signupPassword">Password</label>
+        <input id="signupPassword" type="password" autocomplete="new-password" placeholder="At least 8 characters">
+      </div>
+      <button class="btn" id="signupButton">Create account</button>
+      <p class="status" id="signupStatus"></p>
+    </div>
+
+    <div class="card">
+      <h3>Already a member?</h3>
+      <div class="field">
+        <label for="fanEmail">Email address</label>
+        <input id="fanEmail" type="email" autocomplete="email" placeholder="Your email">
+      </div>
+      <div class="field">
+        <label for="fanPassword">Password</label>
+        <input id="fanPassword" type="password" autocomplete="current-password" placeholder="Your password">
+      </div>
+      <button class="btn secondary" id="fanLoginButton">Log in</button>
+      <p class="status" id="fanLoginStatus"></p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap hidden" id="accountPanel">
+  <div class="adminbox">
+    <div class="eyebrow">Member area</div>
+    <h2>Your account</h2>
+    <p id="accountName">You are logged in.</p>
+    <p id="accountEmail"></p>
+    <button class="btn secondary" id="fanLogoutButton">Log out</button>
+  </div>
+</section>
+
+<section class="wrap" id="adminLogin">
+  <div class="adminbox">
+    <div class="eyebrow">Restricted access</div>
+    <h2>Administrator login</h2>
+    <p>Only the authorised administrator account can access the site editor.</p>
+    <div class="field">
+      <label for="adminEmail">Admin email</label>
+      <input id="adminEmail" type="email" autocomplete="username">
+    </div>
+    <div class="field">
+      <label for="adminPassword">Admin password</label>
+      <input id="adminPassword" type="password" autocomplete="current-password">
+    </div>
+    <button class="btn" id="adminLoginButton">Log in as administrator</button>
+    <p class="status" id="adminLoginStatus"></p>
+  </div>
+</section>
+
+<section class="wrap hidden" id="admin">
+  <div class="adminbox">
+    <div class="eyebrow">Private site editor</div>
+    <h2>Administrator dashboard</h2>
+    <p>You are signed in with the authorised administrator account.</p>
+
+    <div class="divider"></div>
+    <h3>Edit homepage</h3>
+    <div class="field">
+      <label for="editHeadline">Homepage headline</label>
+      <input id="editHeadline" type="text">
+    </div>
+    <div class="field">
+      <label for="editIntro">Homepage introduction</label>
+      <textarea id="editIntro"></textarea>
+    </div>
+    <div class="field">
+      <label for="editAboutTitle">About heading</label>
+      <input id="editAboutTitle" type="text">
+    </div>
+    <div class="field">
+      <label for="editAboutText">About description</label>
+      <textarea id="editAboutText"></textarea>
+    </div>
+
+    <div class="divider"></div>
+    <h3>Add a show announcement</h3>
+    <div class="field">
+      <label for="newShowTitle">Announcement title</label>
+      <input id="newShowTitle" type="text" placeholder="Announcement title">
+    </div>
+    <div class="field">
+      <label for="newShowBody">Announcement details</label>
+      <textarea id="newShowBody" placeholder="Only publish verified event information."></textarea>
+    </div>
+    <button class="btn secondary" id="addShowButton">Add announcement</button>
+
+    <div class="divider"></div>
+    <h3>Post a community update</h3>
+    <div class="field">
+      <label for="newUpdate">Update message</label>
+      <textarea id="newUpdate" placeholder="Write your community update"></textarea>
+    </div>
+    <button class="btn secondary" id="addUpdateButton">Add update</button>
+
+    <div class="divider"></div>
+    <button class="btn" id="saveButton">Save website changes</button>
+    <button class="btn danger" id="adminLogoutButton">Admin log out</button>
+    <p class="status" id="adminStatus"></p>
+
+    <div class="divider"></div>
+    <p class="small">Changes are stored in your Supabase database. Do not publish private customer information, passwords, or payment details here.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>Matt Rife Fan Community</p>
+  <p>Independent fan website. Not an official Matt Rife website and not affiliated with or endorsed by him.</p>
+  <p>© <span id="year"></span> Fan Community</p>
+  <button class="btn secondary" id="showAdminLogin">Administrator</button>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+/* SUPABASE CONNECTION */
 const SUPABASE_URL = "https://rdwuolmnoifltvkafihv.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_MlFmCF5tect0E0TuPGzEng_3gTE4OU2";
 
@@ -105,38 +325,339 @@ const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_PUBLISHABLE_KEY
 );
-  const ADMIN_ID = "04ba51c7-b579-4aa6-95f1-919e632d4fbf";
 
-const adminSection = document.getElementById("admin");
-const loginSection = document.getElementById("adminLogin");
+/* AUTHORISED ADMIN USER */
+const ADMIN_ID = "04ba51c7-b579-4aa6-95f1-919e632d4fbf";
 
-adminSection.style.display = "none";
-
-document.getElementById("toggle").onclick = () => {
-  loginSection.style.display = "block";
-  loginSection.scrollIntoView({behavior:"smooth"});
+/* DEFAULT WEBSITE CONTENT */
+const initialContent = {
+  headline: "Welcome to the Matt Rife Fan Community.",
+  intro: "A place for fans to connect, celebrate comedy, and share their appreciation for Matt Rife.",
+  aboutTitle: "About the community",
+  aboutText: "This independent fan community is for people who enjoy Matt Rife's comedy and want to connect with other fans.",
+  shows: [],
+  updates: []
 };
 
-document.getElementById("adminLoginButton").onclick = async () => {
-  const email = document.getElementById("adminEmail").value.trim();
-  const password = document.getElementById("adminPassword").value;
-  const status = document.getElementById("loginStatus");
+let siteData = structuredClone(initialContent);
+let contentRowId = null;
+let currentUser = null;
 
-  status.textContent = "Checking login...";
+/* SHORTCUTS */
+const byId = id => document.getElementById(id);
+const showStatus = (id, message) => {
+  byId(id).textContent = message;
+};
 
-  const {data, error} = await supabaseClient.auth.signInWithPassword({
+/* LOAD CONTENT FROM SUPABASE */
+async function loadSiteContent() {
+  const { data, error } = await supabaseClient
+    .from("site_content")
+    .select("id, content_value")
+    .eq("content_key", "site_data")
+    .limit(1);
+
+  if (error) {
+    console.error(error);
+    showStatus("adminStatus", "Could not load saved website content.");
+    return;
+  }
+
+  if (data && data.length > 0) {
+    contentRowId = data[0].id;
+    try {
+      const saved = JSON.parse(data[0].content_value);
+      siteData = {
+        ...initialContent,
+        ...saved,
+        shows: Array.isArray(saved.shows) ? saved.shows : [],
+        updates: Array.isArray(saved.updates) ? saved.updates : []
+      };
+    } catch (error) {
+      console.error("Saved content is not valid JSON.", error);
+    }
+  }
+
+  renderSite();
+  fillEditor();
+}
+
+/* SAVE CONTENT TO SUPABASE */
+async function saveSiteContent() {
+  const contentValue = JSON.stringify(siteData);
+
+  if (contentRowId) {
+    const { error } = await supabaseClient
+      .from("site_content")
+      .update({
+        content_value: contentValue,
+        updated_at: new Date().toISOString()
+      })
+      .eq("id", contentRowId);
+
+    if (error) throw error;
+  } else {
+    const { data, error } = await supabaseClient
+      .from("site_content")
+      .insert({
+        content_key: "site_data",
+        content_value: contentValue
+      })
+      .select("id")
+      .single();
+
+    if (error) throw error;
+    contentRowId = data.id;
+  }
+}
+
+/* DISPLAY WEBSITE CONTENT */
+function renderSite() {
+  byId("headline").textContent = siteData.headline;
+  byId("intro").textContent = siteData.intro;
+  byId("aboutTitle").textContent = siteData.aboutTitle;
+  byId("aboutText").textContent = siteData.aboutText;
+
+  const showList = byId("showList");
+  showList.replaceChildren();
+
+  if (!siteData.shows.length) {
+    const empty = document.createElement("div");
+    empty.className = "card";
+    empty.textContent = "No announcements have been posted yet.";
+    showList.appendChild(empty);
+  }
+
+  siteData.shows.forEach(show => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const tag = document.createElement("div");
+    tag.className = "mini";
+    tag.textContent = "Announcement";
+
+    const title = document.createElement("h3");
+    title.textContent = show.title || "Community announcement";
+
+    const body = document.createElement("p");
+    body.textContent = show.body || "";
+
+    card.append(tag, title, body);
+    showList.appendChild(card);
+  });
+
+  const updateList = byId("updateList");
+  updateList.replaceChildren();
+
+  if (!siteData.updates.length) {
+    const empty = document.createElement("div");
+    empty.className = "card";
+    empty.textContent = "No updates have been posted yet.";
+    updateList.appendChild(empty);
+  }
+
+  siteData.updates.forEach(update => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const tag = document.createElement("div");
+    tag.className = "mini";
+    tag.textContent = "Community update";
+
+    const body = document.createElement("p");
+    body.textContent = update;
+
+    card.append(tag, body);
+    updateList.appendChild(card);
+  });
+}
+
+/* FILL ADMIN EDITOR */
+function fillEditor() {
+  byId("editHeadline").value = siteData.headline;
+  byId("editIntro").value = siteData.intro;
+  byId("editAboutTitle").value = siteData.aboutTitle;
+  byId("editAboutText").value = siteData.aboutText;
+}
+
+/* ADMIN ACCESS CHECK */
+function isAdmin(user) {
+  return !!user && user.id === ADMIN_ID;
+}
+
+function updateAccountDisplay(user) {
+  currentUser = user || null;
+
+  const loggedIn = !!user;
+  byId("accountPanel").classList.toggle("hidden", !loggedIn);
+
+  if (loggedIn) {
+    const name = user.user_metadata?.full_name || "Community member";
+    byId("accountName").textContent = "Welcome, " + name;
+    byId("accountEmail").textContent = user.email || "";
+  }
+
+  byId("admin").classList.toggle("hidden", !isAdmin(user));
+
+  if (isAdmin(user)) {
+    byId("adminLogin").classList.add("hidden");
+    fillEditor();
+  }
+}
+
+/* SAVE A FAN PROFILE */
+async function ensureFanProfile(user) {
+  if (!user || isAdmin(user)) return;
+
+  const { data, error } = await supabaseClient
+    .from("fan_profiles")
+    .select("id")
+    .eq("user_id", user.id)
+    .limit(1);
+
+  if (error) {
+    console.error("Profile lookup failed:", error);
+    return;
+  }
+
+  if (data && data.length > 0) return;
+
+  const { error: insertError } = await supabaseClient
+    .from("fan_profiles")
+    .insert({
+      user_id: user.id,
+      full_name: user.user_metadata?.full_name || "",
+      email: user.email || ""
+    });
+
+  if (insertError) {
+    console.error("Profile creation failed:", insertError);
+  }
+}
+
+/* FAN REGISTRATION */
+byId("signupButton").addEventListener("click", async () => {
+  const fullName = byId("signupName").value.trim();
+  const email = byId("signupEmail").value.trim();
+  const password = byId("signupPassword").value;
+
+  if (!fullName || !email || password.length < 8) {
+    showStatus("signupStatus", "Enter your name, a valid email and a password of at least 8 characters.");
+    return;
+  }
+
+  showStatus("signupStatus", "Creating your account...");
+
+  const { data, error } = await supabaseClient.auth.signUp({
+    email,
+    password,
+    options: {
+      data: { full_name: fullName }
+    }
+  });
+
+  if (error) {
+    showStatus("signupStatus", error.message);
+    return;
+  }
+
+  if (data.session && data.user) {
+    await ensureFanProfile(data.user);
+    showStatus("signupStatus", "Your account has been created. Welcome!");
+  } else {
+    showStatus("signupStatus", "Account created. Check your email to confirm it, then log in.");
+  }
+});
+
+/* FAN LOGIN */
+byId("fanLoginButton").addEventListener("click", async () => {
+  const email = byId("fanEmail").value.trim();
+  const password = byId("fanPassword").value;
+
+  if (!email || !password) {
+    showStatus("fanLoginStatus", "Enter your email and password.");
+    return;
+  }
+
+  showStatus("fanLoginStatus", "Signing in...");
+
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
     email,
     password
   });
 
-  if (error || data.user.id !== ADMIN_ID) {
-    await supabaseClient.auth.signOut();
-    status.textContent = "Login failed. Check your details.";
+  if (error) {
+    showStatus("fanLoginStatus", error.message);
     return;
   }
 
-  loginSection.style.display = "none";
-  adminSection.style.display = "block";
-  adminSection.scrollIntoView({behavior:"smooth"});
-};
-</script></body></html>
+  await ensureFanProfile(data.user);
+  showStatus("fanLoginStatus", "You are logged in.");
+  updateAccountDisplay(data.user);
+});
+
+/* FAN LOGOUT */
+byId("fanLogoutButton").addEventListener("click", async () => {
+  const { error } = await supabaseClient.auth.signOut();
+
+  if (error) {
+    alert(error.message);
+    return;
+  }
+
+  updateAccountDisplay(null);
+});
+
+/* OPEN ADMIN LOGIN */
+byId("showAdminLogin").addEventListener("click", () => {
+  byId("adminLogin").classList.remove("hidden");
+  byId("adminLogin").scrollIntoView({ behavior: "smooth" });
+});
+
+/* ADMIN LOGIN */
+byId("adminLoginButton").addEventListener("click", async () => {
+  const email = byId("adminEmail").value.trim();
+  const password = byId("adminPassword").value;
+
+  if (!email || !password) {
+    showStatus("adminLoginStatus", "Enter your administrator email and password.");
+    return;
+  }
+
+  showStatus("adminLoginStatus", "Checking administrator login...");
+
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if (error || !data.user || !isAdmin(data.user)) {
+    await supabaseClient.auth.signOut();
+    showStatus("adminLoginStatus", "Administrator login failed. Check your details.");
+    return;
+  }
+
+  updateAccountDisplay(data.user);
+  showStatus("adminLoginStatus", "Administrator login successful.");
+  byId("admin").scrollIntoView({ behavior: "smooth" });
+});
+
+/* ADMIN LOGOUT */
+byId("adminLogoutButton").addEventListener("click", async () => {
+  const { error } = await supabaseClient.auth.signOut();
+
+  if (error) {
+    showStatus("adminStatus", error.message);
+    return;
+  }
+
+  updateAccountDisplay(null);
+  byId("adminLogin").classList.remove("hidden");
+  showStatus("adminLoginStatus", "You have logged out.");
+});
+
+/* ADD SHOW */
+byId("addShowButton").addEventListener("click", () => {
+  if (!isAdmin(currentUser)) return;
+
+  const title = byId("newShowTitle
