@@ -27,6 +27,32 @@ header{display:flex;justify-content:space-between;align-items:center;padding:20p
 <section class="section" id="updates"><div class="eyebrow">Newsroom</div><h2>Latest updates</h2><div class="updates" id="updatesList"><article class="update"><small>WELCOME</small><div>Welcome! Show announcements and community updates will appear here.</div></article></div></section>
 </main>
 <footer><div class="wrap">© <span id="year"></span> Matt Rife Fan Community. Independently operated fan website. Purchase and ticket enquiries: <a id="purchaseEmail" href="mailto:lydiaviolet776@gmail.com">lydiaviolet776@gmail.com</a>.</div></footer>
+  <section class="wrap" id="adminLogin" style="display:none;padding:28px 0">
+  <div class="adminbox">
+    <h2>Administrator Login</h2>
+    <div class="field">
+      <label>Email address</label>
+      <input id="adminEmail" type="email">
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input id="adminPassword" type="password">
+    </div>
+    <button class="btn" id="adminLoginButton">Log in</button>
+    <p id="loginStatus" class="hint"></p>
+  </div>
+</section>
+<section class="wrap" id="admin"><div class="adminbox"><div class="eyebrow">Private site editor</div><h2>Admin dashboard</h2>
+<p class="hint">Demo editor only: edits are saved in this browser on this device. It is not yet a secure online backend. Do not store customer, payment or password information here.</p>
+<div class="grid">
+<div class="field"><label>Purchase enquiry email</label><input id="purchaseEmailInput" type="email" value="lydiaviolet776@gmail.com"></div>
+<div class="field"><label>WhatsApp number (international format, digits only)</label><input id="waNumber" placeholder="e.g. 2348012345678"></div>
+<div class="field"><label>Homepage headline</label><input id="eHeadline"></div>
+<div class="field"><label>Homepage introduction</label><textarea id="eIntro"></textarea></div>
+<div class="field"><label>About heading</label><input id="eAboutTitle"></div>
+<div class="field"><label>About text</label><textarea id="eAboutText"></textarea></div>
+<div class="field"><label>Add a show </main>
+<footer><div class="wrap">© <span id="year"></span> Matt Rife Fan Community. Independently operated fan website. Purchase and ticket enquiries: <a id="purchaseEmail" href="mailto:lydiaviolet776@gmail.com">lydiaviolet776@gmail.com</a>.</div></footer>
 <section class="wrap" id="admin"><div class="adminbox"><div class="eyebrow">Private site editor</div><h2>Admin dashboard</h2>
 <p class="hint">Demo editor only: edits are saved in this browser on this device. It is not yet a secure online backend. Do not store customer, payment or password information here.</p>
 <div class="grid">
@@ -37,6 +63,9 @@ header{display:flex;justify-content:space-between;align-items:center;padding:20p
 <div class="field"><label>About heading</label><input id="eAboutTitle"></div>
 <div class="field"><label>About text</label><textarea id="eAboutText"></textarea></div>
 <div class="field"><label>Add a show announcement</label><textarea id="eShow" placeholder="Include confirmed date, venue, ticket info and source"></textarea></div>
+<div class="field"><label>Post a fan update</label><textarea id="eUpdate" placeholder="Write your update"></textarea></div>
+<div class="field"><label>Replace homepage photo</label><input id="ePhoto" type="file" accept="image/*"></div>
+</div> id="eShow" placeholder="Include confirmed date, venue, ticket info and source"></textarea></div>
 <div class="field"><label>Post a fan update</label><textarea id="eUpdate" placeholder="Write your update"></textarea></div>
 <div class="field"><label>Replace homepage photo</label><input id="ePhoto" type="file" accept="image/*"></div>
 </div>
@@ -76,4 +105,38 @@ const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_PUBLISHABLE_KEY
 );
+  const ADMIN_ID = "04ba51c7-b579-4aa6-95f1-919e632d4fbf";
+
+const adminSection = document.getElementById("admin");
+const loginSection = document.getElementById("adminLogin");
+
+adminSection.style.display = "none";
+
+document.getElementById("toggle").onclick = () => {
+  loginSection.style.display = "block";
+  loginSection.scrollIntoView({behavior:"smooth"});
+};
+
+document.getElementById("adminLoginButton").onclick = async () => {
+  const email = document.getElementById("adminEmail").value.trim();
+  const password = document.getElementById("adminPassword").value;
+  const status = document.getElementById("loginStatus");
+
+  status.textContent = "Checking login...";
+
+  const {data, error} = await supabaseClient.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if (error || data.user.id !== ADMIN_ID) {
+    await supabaseClient.auth.signOut();
+    status.textContent = "Login failed. Check your details.";
+    return;
+  }
+
+  loginSection.style.display = "none";
+  adminSection.style.display = "block";
+  adminSection.scrollIntoView({behavior:"smooth"});
+};
 </script></body></html>
