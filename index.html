@@ -66,4 +66,14 @@ const file=$("ePhoto").files[0];const finish=()=>{try{localStorage.setItem("mrfa
 if(file){const r=new FileReader();r.onload=()=>{d.photo=r.result;finish()};r.readAsDataURL(file)}else finish();
 };
 $("reset").onclick=()=>{d={...initial,shows:[],updates:[...initial.updates]};localStorage.removeItem("mrfanplatform");fill();render();$("status").textContent="Demo reset."};render();
+</script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://db.rdwuolmnoifltvkafihv.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_MlFmCF5tect0E0TuPGzEng_3gTE4OU2";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
 </script></body></html>
