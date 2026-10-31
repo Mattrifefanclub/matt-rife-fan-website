@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Fan community, show information and membership enquiries.">
+<title>Matt Rife Fan Community</title>
+<style>
+:root{--bg:#090a10;--panel:#151824;--line:#303447;--ink:#f7f7fb;--muted:#b6bac8;--accent:#bda5ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,Arial,sans-serif}a{color:inherit}.wrap{width:min(1100px,92%);margin:auto}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--line);gap:15px}.logo{font-weight:900;letter-spacing:.1em}nav{display:flex;gap:18px;flex-wrap:wrap}nav a{text-decoration:none;color:var(--muted);font-size:.92rem}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;padding:60px 0}.hero img{width:100%;height:520px;object-fit:cover;object-position:center 25%;border-radius:20px;border:1px solid var(--line)}.eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.16em;font-size:.76rem;font-weight:800}.hero h1{font-size:clamp(2.7rem,6vw,5rem);line-height:1.02;margin:14px 0}.muted{color:var(--muted)}.btn{display:inline-block;text-decoration:none;border:0;border-radius:999px;background:var(--accent);color:#171322;font-weight:800;padding:12px 19px;cursor:pointer}.btn.alt{background:transparent;border:1px solid #656b80;color:var(--ink)}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.section{padding:42px 0;border-top:1px solid var(--line)}h2{font-size:2rem;margin:5px 0 12px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:22px}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px}.card h3{margin:0 0 8px}.card p{color:var(--muted);margin:0 0 16px}.tag{display:inline-block;color:var(--accent);font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em}.notice{background:#141724;border:1px solid var(--line);border-radius:13px;padding:15px;color:var(--muted);font-size:.88rem;margin-top:20px}.updates{display:grid;gap:12px;margin-top:18px}.update{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}.update small{color:var(--accent)}footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.85rem;margin-top:30px}
+#admin{display:none;padding:28px 0}.adminbox{background:var(--panel);border:1px solid var(--line);padding:22px;border-radius:16px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:6px;margin:9px 0}.field label{font-size:.86rem;color:var(--muted)}input,textarea{width:100%;padding:11px;border-radius:9px;border:1px solid #41475c;background:#090b12;color:white;font:inherit}textarea{min-height:90px}.hint{font-size:.82rem;color:var(--muted)}.adminrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.linkbutton{background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;padding:12px}
+@media(max-width:740px){header{align-items:flex-start;flex-direction:column}.hero{grid-template-columns:1fr;padding:35px 0}.hero img{height:420px}.cards,.grid{grid-template-columns:1fr}}
+</style></head>
+<body>
+<header class="wrap"><div class="logo">MATT RIFE <span style="color:var(--accent)">FAN COMMUNITY</span></div>
+<nav><a href="#about">About</a><a href="#shows">Shows</a><a href="#membership">Membership</a><a href="#updates">Updates</a></nav></header>
+<main class="wrap">
+<section class="hero"><div><div class="eyebrow">Fan community</div><h1 id="headline">Comedy brings us together.</h1>
+<p class="muted" id="intro">Welcome to a fan community celebrating Matt Rife. Find show information, community updates and ways to enquire about tickets and membership.</p>
+<div class="actions"><a class="btn" href="#shows">Explore shows</a><a class="btn alt" href="#membership">Membership enquiries</a></div>
+<div class="notice"><strong>Fan-site notice:</strong> This website is independently operated by a fan/administrator. It is not the artist’s official website unless separately authorized and approved for that representation. Ticket availability, prices and membership benefits must be confirmed directly before payment.</div></div>
+<img id="portrait" src="assets/fan-page-photo.jpg" alt="Photo supplied for the fan website"></section>
+<section class="section" id="about"><div class="eyebrow">About</div><h2 id="aboutTitle">A home for fans and comedy lovers</h2><p class="muted" id="aboutText">A place to share updates, celebrate comedy and help fans find information about upcoming events. Check verified artist and venue channels for confirmed dates and details.</p></section>
+<section class="section" id="shows"><div class="eyebrow">Live events</div><h2>Show information & ticket enquiries</h2><p class="muted">Browse announcements and contact the administrator to ask about ticket availability. Email the site administrator to enquire about tickets. An email enquiry is not a confirmed booking or proof of payment.</p><div class="cards" id="showCards"><article class="card"><span class="tag">Show announcement</span><h3>Upcoming show details</h3><p>Show date, venue and ticket information will be posted here by the site administrator.</p><a class="btn email-link" data-subject="Show ticket enquiry" href="#">Enquire by email</a></article></div></section>
+<section class="section" id="membership"><div class="eyebrow">Fan membership</div><h2>Join the fan community</h2><p class="muted">Ask about membership options, what is included, pricing and fulfilment before purchasing.</p><div class="cards"><article class="card"><h3>Membership enquiry</h3><p>Message the administrator to request current membership details.</p><a class="btn email-link" data-subject="Fan membership enquiry" href="#">Ask about membership</a></article><article class="card"><h3>Digital card enquiries</h3><p>Ask whether digital membership cards are available and how they are issued.</p><a class="btn alt email-link" data-subject="Digital membership card enquiry" href="#">Enquire about a card</a></article></div></section>
+<section class="section" id="updates"><div class="eyebrow">Newsroom</div><h2>Latest updates</h2><div class="updates" id="updatesList"><article class="update"><small>WELCOME</small><div>Welcome! Show announcements and community updates will appear here.</div></article></div></section>
+</main>
+<footer><div class="wrap">© <span id="year"></span> Matt Rife Fan Community. Independently operated fan website. Purchase and ticket enquiries: <a id="purchaseEmail" href="mailto:lydiaviolet776@gmail.com">lydiaviolet776@gmail.com</a>.</div></footer>
+<section class="wrap" id="admin"><div class="adminbox"><div class="eyebrow">Private site editor</div><h2>Admin dashboard</h2>
+<p class="hint">Demo editor only: edits are saved in this browser on this device. It is not yet a secure online backend. Do not store customer, payment or password information here.</p>
+<div class="grid">
+<div class="field"><label>Purchase enquiry email</label><input id="purchaseEmailInput" type="email" value="lydiaviolet776@gmail.com"></div>
+<div class="field"><label>WhatsApp number (international format, digits only)</label><input id="waNumber" placeholder="e.g. 2348012345678"></div>
+<div class="field"><label>Homepage headline</label><input id="eHeadline"></div>
+<div class="field"><label>Homepage introduction</label><textarea id="eIntro"></textarea></div>
+<div class="field"><label>About heading</label><input id="eAboutTitle"></div>
+<div class="field"><label>About text</label><textarea id="eAboutText"></textarea></div>
+<div class="field"><label>Add a show announcement</label><textarea id="eShow" placeholder="Include confirmed date, venue, ticket info and source"></textarea></div>
+<div class="field"><label>Post a fan update</label><textarea id="eUpdate" placeholder="Write your update"></textarea></div>
+<div class="field"><label>Replace homepage photo</label><input id="ePhoto" type="file" accept="image/*"></div>
+</div>
+<div class="adminrow"><button class="btn" id="save">Save changes</button><button class="btn alt" id="reset">Reset demo</button></div><p class="hint" id="status" aria-live="polite"></p></div></section>
+<div class="wrap" style="text-align:center;padding:12px 0 30px"><button class="linkbutton" id="toggle">Open admin editor</button></div>
+<script>
+const initial={email:"lydiaviolet776@gmail.com",wa:"",headline:"Comedy brings us together.",intro:"Welcome to a fan community celebrating Matt Rife. Find show information, community updates and ways to enquire about tickets and membership.",aboutTitle:"A home for fans and comedy lovers",aboutText:"A place to share updates, celebrate comedy and help fans find information about upcoming events. Check verified artist and venue channels for confirmed dates and details.",shows:[],updates:["Welcome! Show announcements and community updates will appear here."],photo:"assets/fan-page-photo.jpg"};
+let d;try{d=JSON.parse(localStorage.getItem("mrfanplatform"))||structuredClone(initial)}catch(e){d={...initial}}
+const $=id=>document.getElementById(id);
+function emailUrl(subject){const address=(d.email||"lydiaviolet776@gmail.com").trim();return "mailto:"+address+"?subject="+encodeURIComponent(subject||"Purchase enquiry")}
+function waUrl(message){const n=(d.wa||"").replace(/\\D/g,"");return n?"https://wa.me/"+n+"?text="+encodeURIComponent(message):"#"}
+function render(){
+$("headline").textContent=d.headline;$("intro").textContent=d.intro;$("aboutTitle").textContent=d.aboutTitle;$("aboutText").textContent=d.aboutText;$("portrait").src=d.photo;$("year").textContent=new Date().getFullYear();
+$("purchaseEmail").textContent=d.email||"lydiaviolet776@gmail.com";$("purchaseEmail").href="mailto:"+encodeURIComponent(d.email||"lydiaviolet776@gmail.com");
+document.querySelectorAll(".email-link").forEach(a=>{a.href=emailUrl(a.dataset.subject);});
+document.querySelectorAll(".wa-link").forEach(a=>{a.href=waUrl(a.dataset.message);a.target="_blank";a.rel="noopener";a.onclick=e=>{if(!d.wa){e.preventDefault();alert("The administrator has not added a WhatsApp number yet. Please check back later.")}}});
+const sc=$("showCards");sc.innerHTML="";(d.shows.length?d.shows:[{title:"Upcoming show details",body:"Show date, venue and ticket information will be posted here by the site administrator."}]).forEach(s=>{let c=document.createElement("article");c.className="card";let tag=document.createElement("span");tag.className="tag";tag.textContent="Show announcement";let h=document.createElement("h3");h.textContent=s.title;let p=document.createElement("p");p.textContent=s.body;let a=document.createElement("a");a.className="btn email-link";a.dataset.subject="Ticket enquiry: "+s.title;a.textContent="Enquire by email";a.href=emailUrl(a.dataset.subject);c.append(tag,h,p,a);sc.append(c)});
+const ul=$("updatesList");ul.innerHTML="";d.updates.forEach(u=>{let a=document.createElement("article");a.className="update";let sm=document.createElement("small");sm.textContent="FAN UPDATE";let div=document.createElement("div");div.textContent=u;a.append(sm,div);ul.append(a)});
+}
+function fill(){ $("purchaseEmailInput").value=d.email||"lydiaviolet776@gmail.com";$("waNumber").value=d.wa;$("eHeadline").value=d.headline;$("eIntro").value=d.intro;$("eAboutTitle").value=d.aboutTitle;$("eAboutText").value=d.aboutText}
+$("toggle").onclick=()=>{ $("admin").style.display=$("admin").style.display==="block"?"none":"block";if($("admin").style.display==="block"){fill();$("admin").scrollIntoView({behavior:"smooth"})}};
+$("save").onclick=()=>{
+d.wa=$("waNumber").value.replace(/\\D/g,"");d.headline=$("eHeadline").value.trim();d.intro=$("eIntro").value.trim();d.aboutTitle=$("eAboutTitle").value.trim();d.aboutText=$("eAboutText").value.trim();
+const show=$("eShow").value.trim();if(show){const first=show.split("\\n");d.shows.unshift({title:first[0].slice(0,90),body:show});$("eShow").value=""}
+const update=$("eUpdate").value.trim();if(update){d.updates.unshift(update);$("eUpdate").value=""}
+const file=$("ePhoto").files[0];const finish=()=>{try{localStorage.setItem("mrfanplatform",JSON.stringify(d));$("status").textContent="Saved in this browser. Purchase enquiry buttons open an email to lydiaviolet776@gmail.com."}catch(e){$("status").textContent="Could not save. Try a smaller photo."}render()};
+if(file){const r=new FileReader();r.onload=()=>{d.photo=r.result;finish()};r.readAsDataURL(file)}else finish();
+};
+$("reset").onclick=()=>{d={...initial,shows:[],updates:[...initial.updates]};localStorage.removeItem("mrfanplatform");fill();render();$("status").textContent="Demo reset."};render();
+</script></body></html>
