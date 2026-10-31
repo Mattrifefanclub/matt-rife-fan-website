@@ -661,3 +661,89 @@ byId("addShowButton").addEventListener("click", () => {
   if (!isAdmin(currentUser)) return;
 
   const title = byId("newShowTitle
+                     
+");
+  const body = byId("newShowBody").value.trim();
+
+  if (!title || !body) {
+    showStatus("adminStatus", "Enter the announcement title and details first.");
+    return;
+  }
+
+  siteData.shows.unshift({ title, body });
+  byId("newShowTitle").value = "";
+  byId("newShowBody").value = "";
+  renderSite();
+  showStatus("adminStatus", "Announcement added. Press Save website changes to publish it.");
+});
+
+/* ADD UPDATE */
+byId("addUpdateButton").addEventListener("click", () => {
+  if (!isAdmin(currentUser)) return;
+
+  const update = byId("newUpdate").value.trim();
+
+  if (!update) {
+    showStatus("adminStatus", "Write an update first.");
+    return;
+  }
+
+  siteData.updates.unshift(update);
+  byId("newUpdate").value = "";
+  renderSite();
+  showStatus("adminStatus", "Update added. Press Save website changes to publish it.");
+});
+
+/* SAVE WEBSITE */
+byId("saveButton").addEventListener("click", async () => {
+  if (!isAdmin(currentUser)) {
+    showStatus("adminStatus", "Administrator access required.");
+    return;
+  }
+
+  siteData.headline = byId("editHeadline").value.trim();
+  siteData.intro = byId("editIntro").value.trim();
+  siteData.aboutTitle = byId("editAboutTitle").value.trim();
+  siteData.aboutText = byId("editAboutText").value.trim();
+
+  showStatus("adminStatus", "Saving to Supabase...");
+
+  try {
+    await saveSiteContent();
+    renderSite();
+    showStatus("adminStatus", "Your website changes have been saved successfully.");
+  } catch (error) {
+    console.error(error);
+    showStatus("adminStatus", "Save failed: " + (error.message || "Check your Supabase settings."));
+  }
+});
+
+/* START WEBSITE */
+async function startWebsite() {
+  byId("year").textContent = new Date().getFullYear();
+
+  await loadSiteContent();
+
+  const { data, error } = await supabaseClient.auth.getSession();
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  const user = data.session?.user || null;
+  updateAccountDisplay(user);
+
+  if (user) await ensureFanProfile(user);
+}
+
+supabaseClient.auth.onAuthStateChange((_event, session) => {
+  const user = session?.user || null;
+  updateAccountDisplay(user);
+});
+
+startWebsite();
+</script>
+</body>
+</html>
+
