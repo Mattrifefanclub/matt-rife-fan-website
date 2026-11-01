@@ -81,6 +81,274 @@ $('logoutBtn').addEventListener('click',async()=>{try{const {error}=await client
 $('saveContentBtn').addEventListener('click',async()=>{if(!admin())return;const headline=$('editHeadline').value.trim(),intro=$('editIntro').value.trim(),aboutTitle=$('editAboutTitle').value.trim(),aboutText=$('editAboutText').value.trim();if(!headline||!intro||!aboutTitle||!aboutText){status('contentStatus','Complete all homepage fields before saving.','error');return}siteData={...siteData,headline,intro,aboutTitle,aboutText};busy('saveContentBtn',true,'Saving…');try{await saveContent();renderSite();status('contentStatus','Homepage content saved.','success')}catch(e){status('contentStatus','Save failed: '+e.message,'error')}finally{busy('saveContentBtn',false)}});
 $('addShowBtn').addEventListener('click',()=>{if(!admin())return;const title=$('showTitleInput').value.trim(),body=$('showBodyInput').value.trim();if(!title||!body){status('showAdminStatus','Enter a title and details.','error');return}siteData.shows.unshift({title,body,created_at:new Date().toISOString()});saveContent().then(()=>{renderSite();$('showTitleInput').value='';$('showBodyInput').value='';status('showAdminStatus','Announcement published.','success')}).catch(e=>status('showAdminStatus','Could not publish: '+e.message,'error'))});
 $('addUpdateBtn').addEventListener('click',()=>{if(!admin())return;const body=$('updateInput').value.trim();if(!body){status('updateAdminStatus','Write an update first.','error');return}siteData.updates.unshift({body,created_at:new Date().toISOString()});saveContent().then(()=>{renderSite();$('updateInput').value='';status('updateAdminStatus','Update published.','success')}).catch(e=>status('updateAdminStatus','Could not publish: '+e.message,'error'))});
+  
+// ==========================================
+// SHOWS & COMMUNITY UPDATES UPGRADE
+// ==========================================
+
+// Add extra show information fields
+const showFields = document.createElement('div');
+showFields.innerHTML = `
+  <div class="field">
+    <label for="showDateInput">Show date</label>
+    <input id="showDateInput" type="date">
+  </div>
+  <div class="field">
+    <label for="showVenueInput">Venue / Location</label>
+    <input id="showVenueInput" maxlength="180"
+      placeholder="Enter venue and city">
+  </div>
+  <div class="field">
+    <label for="showTicketInput">Official ticket link (optional)</label>
+    <input id="showTicketInput" type="url"
+      placeholder="https://...">
+  </div>
+`;
+$('showBodyInput').parentElement.append(showFields);
+
+// Enhanced public post display
+renderPosts = function(id, items, kind) {
+  const host = $(id);
+  host.replaceChildren();
+
+  if (!items.length) {
+    host.append(el('div','card empty',
+      kind === 'show'
+        ? 'No show announcements posted yet.'
+        : 'No community updates posted yet.'));
+    return;
+  }
+
+  items.forEach((item,index) => {
+    const c = el('article','card');
+
+    c.append(el('div','tag',
+      kind === 'show' ? 'Upcoming show' : 'Community update'));
+
+    if (kind === 'show') {
+      c.append(el('h3','',item.title || 'Show announcement'));
+
+      if(item.date)
+        c.append(el('p','', 'Date: ' + dateLabel(item.date)));
+
+      if(item.venue)
+        c.append(el('p','', 'Venue: ' + item.venue));
+    }
+
+    c.append(el('p','',
+      typeof item === 'string' ? item : (item.body || '')
+    ));
+
+    if(item.created_at)
+      c.append(el('div','small',
+        'Posted: ' + dateLabel(item.created_at)));
+
+    if(kind === 'show' && item.ticket_url) {
+      try {
+        const url = new URL(item.ticket_url);
+        if(url.protocol === 'https:' || url.protocol === 'http:') {
+          const link = el('a','btn btn-quiet','Official ticket information');
+          link.href = url.href;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.style.marginTop = '12px';
+          c.append(link);
+        }
+      } catch(e) {}
+    }
+
+    if(admin()) {
+      const actions = el('div','record-actions');
+
+      const edit = el('button','btn btn-quiet','Edit');
+      edit.type = 'button';
+      edit.addEventListener('click',()=>editCommunityPost(kind,index));
+
+      const remove = el('button','btn btn-danger','Delete');
+      remove.type = 'button';
+      remove.addEventListener('click',()=>deleteCommunityPost(kind,index));
+
+      actions.append(edit,remove);
+      c.append(actions);
+    }
+
+    host.append(c);
+  });
+};
+
+// Save all changes to existing Supabase content
+async function saveCommunityChanges() {
+  await saveContent();
+  renderSite();
+}
+
+// Add a new show
+document.addEventListener('click', async function(e) {
+  if(e.target.id !== 'addShowBtn') return;
+
+  e.preventDefault();
+  e.stopImmediatePropagation();
+
+  if(!admin()) return;
+
+  const title = $('showTitleInput').value.trim();
+  const body = $('showBodyInput').value.trim();
+  const date = $('showDateInput').value;
+  const venue = $('showVenueInput').value.trim();
+  const ticket_url = $('showTicketInput').value.trim();
+
+  if(!title || !body) {
+    status('showAdminStatus','Enter a title and show details.','error');
+    return;
+  }
+
+  if(ticket_url) {
+    try {
+      const url = new URL(ticket_url);
+      if(!['https:','http:'].includes(url.protocol))
+        throw new Error();
+    } catch(e) {
+      status('showAdminStatus','Enter a valid ticket URL.','error');
+      return;
+    }
+  }
+
+  const item = {
+    title, body, date, venue, ticket_url,
+    created_at: new Date().toISOString()
+  };
+
+  siteData.shows.unshift(item);
+
+  try {
+    await saveCommunityChanges();
+
+    $('showTitleInput').value = '';
+    $('showBodyInput').value = '';
+    $('showDateInput').value = '';
+    $('showVenueInput').value = '';
+    $('showTicketInput').value = '';
+
+    status('showAdminStatus','Show published successfully!','success');
+  } catch(err) {
+    siteData.shows.shift();
+    status('showAdminStatus','Could not save show: '+err.message,'error');
+  }
+},true);
+
+// Edit a show or community update
+async function editCommunityPost(kind,index) {
+  if(!admin()) return;
+
+  const list = kind === 'show' ? siteData.shows : siteData.updates;
+  const item = list[index];
+  if(!item) return;
+
+  const title = kind === 'show'
+    ? prompt('Edit show title:',item.title || '')
+    : item.body;
+
+  if(title === null) return;
+
+  const body = prompt(
+    kind === 'show' ? 'Edit show details:' : 'Edit community update:',
+    kind === 'show' ? item.body || '' : item.body || ''
+  );
+
+  if(body === null || !body.trim()) return;
+
+  const updated = {...item,body:body.trim()};
+
+  if(kind === 'show') {
+    if(!title.trim()) return;
+    updated.title = title.trim();
+
+    const date = prompt('Edit show date (YYYY-MM-DD):',item.date || '');
+    if(date === null) return;
+    updated.date = date.trim();
+
+    const venue = prompt('Edit venue:',item.venue || '');
+    if(venue === null) return;
+    updated.venue = venue.trim();
+
+    const ticket = prompt('Edit official ticket URL:',item.ticket_url || '');
+    if(ticket === null) return;
+    updated.ticket_url = ticket.trim();
+  }
+
+  list[index] = updated;
+
+  try {
+    await saveCommunityChanges();
+    status(
+      kind === 'show' ? 'showAdminStatus' : 'updateAdminStatus',
+      'Changes saved successfully!','success'
+    );
+  } catch(err) {
+    list[index] = item;
+    renderSite();
+    alert('Could not save changes: '+err.message);
+  }
+}
+
+// Delete a show or community update
+async function deleteCommunityPost(kind,index) {
+  if(!admin()) return;
+
+  const list = kind === 'show' ? siteData.shows : siteData.updates;
+
+  if(!list[index]) return;
+
+  if(!confirm('Are you sure you want to delete this post?')) return;
+
+  const removed = list.splice(index,1)[0];
+
+  try {
+    await saveCommunityChanges();
+    status(
+      kind === 'show' ? 'showAdminStatus' : 'updateAdminStatus',
+      'Post deleted successfully.','success'
+    );
+  } catch(err) {
+    list.splice(index,0,removed);
+    renderSite();
+    alert('Could not delete post: '+err.message);
+  }
+}
+
+// Add edit and delete controls to community updates
+document.addEventListener('click', async function(e) {
+  if(e.target.id !== 'addUpdateBtn') return;
+
+  e.preventDefault();
+  e.stopImmediatePropagation();
+
+  if(!admin()) return;
+
+  const body = $('updateInput').value.trim();
+
+  if(!body) {
+    status('updateAdminStatus','Write an update first.','error');
+    return;
+  }
+
+  const item = {
+    body,
+    created_at: new Date().toISOString()
+  };
+
+  siteData.updates.unshift(item);
+
+  try {
+    await saveCommunityChanges();
+    $('updateInput').value = '';
+    status('updateAdminStatus','Community update published!','success');
+  } catch(err) {
+    siteData.updates.shift();
+    status('updateAdminStatus','Could not publish: '+err.message,'error');
+  }
+},true);
+
 async function start(){ $('year').textContent=new Date().getFullYear();if(!client){status('signupStatus','Supabase connection library failed to load. Refresh and check your internet.','error');return}if(adminMode)$('adminLogin').classList.remove('hidden');await loadContent();try{const {data,error}=await client.auth.getSession();if(error)throw error;await refreshSession(data.session?.user||null)}catch(e){console.error(e);status('loginStatus','Could not restore login session: '+e.message,'error')}}
 client?.auth.onAuthStateChange((_event,session)=>{setTimeout(()=>refreshSession(session?.user||null),0)});
 start();
