@@ -60,8 +60,34 @@ if(adminView&&kind!=='profile'){const actions=el('div','record-actions');const o
 function renderRecords(id,rows,kind,adminView=false){const host=$(id);host.replaceChildren();if(!rows?.length){host.append(el('div','empty',adminView?'No records found.':'Nothing here yet.'));return}rows.forEach(row=>cardRecord(host,row,kind,adminView))}
 async function loadMemberData(){if(!currentUser||admin())return;try{profileRow=await getProfile(currentUser);fillProfile();const [t,m]=await Promise.all([client.from('fan_tickets').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false}),client.from('fan_memberships').select('*').eq('user_id',currentUser.id).order('issued_at',{ascending:false})]);if(t.error)throw t.error;if(m.error)throw m.error;renderRecords('myTickets',t.data,'ticket');renderRecords('myMemberships',m.data,'membership')}catch(e){console.error(e);status('profileStatus','Could not load your member data: '+e.message,'error')}}
 async function loadAdminData(){if(!admin())return;try{const [p,t,m]=await Promise.all([client.from('fan_profiles').select('*').order('created_at',{ascending:false}),client.from('fan_tickets').select('*').order('created_at',{ascending:false}),client.from('fan_memberships').select('*').order('issued_at',{ascending:false})]);for(const x of [p,t,m])if(x.error)throw x.error;renderRecords('adminProfiles',p.data,'profile',true);renderRecords('adminTickets',t.data,'ticket',true);renderRecords('adminMemberships',m.data,'membership',true)}catch(e){console.error(e);status('adminStatus','Could not load admin records: '+e.message,'error')}}
-async function refreshSession(user){currentUser=user||null;profileRow=null;if(currentUser&&!admin()){try{profileRow=await getProfile(currentUser)}catch(e){console.error(e);status('loginStatus','Signed in, but profile loading failed: '+e.message,'error')}}showAuthState();if(admin())await loadAdminData();else if(currentUser)await loadMemberData()}
-function makeDateInputValue(v){return v||''}
+async function refreshSession(user){
+  currentUser = user || null;
+  profileRow = null;
+
+  if(currentUser && !admin()){
+    try {
+      profileRow = await getProfile(currentUser);
+    } catch(e) {
+      console.error(e);
+      status(
+        'loginStatus',
+        'Signed in, but profile loading failed: ' + e.message,
+        'error'
+      );
+    }
+  }
+
+  showAuthState();
+
+  // Refresh public posts so admin controls appear
+  renderSite();
+
+  if(admin()){
+    await loadAdminData();
+  } else if(currentUser){
+    await loadMemberData();
+  }
+}
 function openAuthModal(focusId){const modal=document.getElementById('authModal');if(!modal)return;modal.classList.remove('hidden');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';if(focusId)setTimeout(()=>document.getElementById(focusId)?.focus(),80)}
 function closeAuthModal(){const modal=document.getElementById('authModal');if(!modal)return;modal.classList.add('hidden');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''}
 $('openSignupBtn').addEventListener('click',()=>openAuthModal('suName'));
