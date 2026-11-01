@@ -267,7 +267,9 @@ async function editCommunityPost(kind,index) {
   if(!admin()) return;
 
   const list = kind === 'show' ? siteData.shows : siteData.updates;
-  const item = list[index];
+  const item = typeof list[index] === 'string'
+  ? {body: list[index]}
+  : list[index];
   if(!item) return;
 
   const title = kind === 'show'
