@@ -516,22 +516,70 @@
     }
 
     byId('signupButton').addEventListener('click', async () => {
-      const button = byId('signupButton');
-      const fullName = byId('signupName').value.trim();
-      const email = byId('signupEmail').value.trim();
-      const password = byId('signupPassword').value;
-      if (!fullName || !email || password.length < 8) {
-        setStatus('signupStatus', 'Enter your name, a valid email address, and a password of at least 8 characters.', 'error');
-        return;
+  const button = byId('signupButton');
+
+  const fullName = byId('signupName').value.trim();
+  const dateOfBirth = byId('signupDob').value;
+  const country = byId('signupCountry').value.trim();
+  const gender = byId('signupGender').value;
+  const phone = byId('signupPhone').value.trim();
+  const email = byId('signupEmail').value.trim();
+  const password = byId('signupPassword').value;
+
+  if (!fullName || !dateOfBirth || !country || !gender || !phone || !email || password.length < 8) {
+    setStatus('signupStatus', 'Please complete every field and use a password of at least 8 characters.', 'error');
+    return;
+  }
+
+  if (new Date(dateOfBirth) > new Date()) {
+    setStatus('signupStatus', 'Date of birth cannot be in the future.', 'error');
+    return;
+  }
+
+  setBusy(button, true, 'Creating account…');
+  setStatus('signupStatus', 'Creating your account…');
+
+  try {
+    const { data, error } = await supabaseClient.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          full_name: fullName,
+          date_of_birth: dateOfBirth,
+          country,
+          gender,
+          phone
+        },
+        emailRedirectTo: SITE_URL
       }
-      setBusy(button, true, 'Creating account…');
-      setStatus('signupStatus', 'Creating your account…');
-      try {
-        const { data, error } = await supabaseClient.auth.signUp({
-          email,
-          password,
-          options: { data: { full_name: fullName }, emailRedirectTo: SITE_URL }
-        });
+    });
+
+    if (error) throw error;
+
+    if (data.session && data.user) {
+      const profileSaved = await ensureFanProfile(data.user);
+      updateAccountDisplay(data.user);
+
+      setStatus(
+        'signupStatus',
+        profileSaved
+          ? 'Your account is ready. Welcome to the community!'
+          : 'Your login was created, but your member profile could not be saved. Please contact the site administrator.',
+        profileSaved ? 'success' : 'error'
+      );
+
+      byId('accountPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      setStatus('signupStatus', 'Account created. Check your email for the confirmation link, then log in.', 'success');
+    }
+  } catch (error) {
+    console.error('Signup failed:', error);
+    setStatus('signupStatus', error.message || 'Account creation failed. Please try again.', 'error');
+  } finally {
+    setBusy(button, false);
+  }
+});
         if (error) throw error;
         if (data.session && data.user) {
           const profileSaved = await ensureFanProfile(data.user);
