@@ -1,822 +1,621 @@
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<meta name="theme-color" content="#101019">  
-<title>Matt Rife Fan Community</title>  
-<meta name="description" content="An independent fan community celebrating Matt Rife.">  <style>  
-:root {  
-  --bg:#101019;  
-  --panel:#191925;  
-  --panel2:#202031;  
-  --text:#f5f2fa;  
-  --muted:#aaa6b9;  
-  --accent:#b99aff;  
-  --line:#343044;  
-}  
-*{box-sizing:border-box}  
-html{scroll-behavior:smooth}  
-body{  
-  margin:0;  
-  background:var(--bg);  
-  color:var(--text);  
-  font-family:Arial,Helvetica,sans-serif;  
-  line-height:1.6;  
-}  
-a{color:inherit;text-decoration:none}  
-button,input,textarea{font:inherit}  
-button{cursor:pointer}  
-header{  
-  position:sticky;  
-  top:0;  
-  z-index:10;  
-  background:rgba(16,16,25,.96);  
-  border-bottom:1px solid var(--line);  
-}  
-.nav{  
-  max-width:1100px;  
-  margin:auto;  
-  padding:15px 20px;  
-  display:flex;  
-  align-items:center;  
-  justify-content:space-between;  
-  gap:15px;  
-  flex-wrap:wrap;  
-}  
-.brand{font-weight:800;letter-spacing:1px}  
-.brand span{color:var(--accent)}  
-nav{display:flex;gap:17px;flex-wrap:wrap}  
-nav a{font-size:13px;color:var(--muted)}  
-nav a:hover{color:var(--accent)}  
-.wrap{max-width:1050px;margin:auto;padding:55px 20px}  
-.hero{  
-  min-height:470px;  
-  display:flex;  
-  align-items:center;  
-  background:linear-gradient(120deg,#171522,#282039);  
-  border-bottom:1px solid var(--line);  
-}  
-.hero-inner{  
-  max-width:1050px;  
-  margin:auto;  
-  padding:65px 25px;  
-  width:100%;  
-}  
-.eyebrow{  
-  color:var(--accent);  
-  font-size:12px;  
-  font-weight:bold;  
-  letter-spacing:2px;  
-  text-transform:uppercase;  
-}  
-h1{font-size:clamp(38px,7vw,68px);line-height:1.08;margin:15px 0}  
-h2{font-size:30px;margin:0 0 15px}  
-h3{margin:0 0 10px}  
-p{color:var(--muted)}  
-.hero p{max-width:620px;font-size:17px}  
-.btn{  
-  border:0;  
-  border-radius:9px;  
-  padding:12px 18px;  
-  background:var(--accent);  
-  color:#171222;  
-  font-weight:800;  
-  display:inline-block;  
-  margin:8px 7px 0 0;  
-}  
-.btn:hover{background:#d0bbff}  
-.btn.secondary{  
-  background:transparent;  
-  color:var(--text);  
-  border:1px solid var(--line);  
-}  
-.btn.danger{background:#542b36;color:white}  
-.section-heading{margin-bottom:25px}  
-.grid{  
-  display:grid;  
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));  
-  gap:17px;  
-}  
-.card,.adminbox{  
-  background:var(--panel);  
-  border:1px solid var(--line);  
-  border-radius:15px;  
-  padding:22px;  
-}  
-.card p{margin-bottom:0}  
-.mini{  
-  font-size:12px;  
-  color:var(--accent);  
-  text-transform:uppercase;  
-  letter-spacing:1px;  
-}  
-.divider{height:1px;background:var(--line);margin:20px 0}  
-.notice{  
-  border:1px solid var(--line);  
-  border-radius:10px;  
-  padding:13px 15px;  
-  color:var(--muted);  
-  font-size:13px;  
-}  
-.field{margin:14px 0}  
-label{  
-  display:block;  
-  margin-bottom:6px;  
-  font-size:13px;  
-  color:#d8d1e7;  
-}  
-input,textarea{  
-  width:100%;  
-  padding:12px;  
-  border-radius:8px;  
-  background:#11111b;  
-  color:var(--text);  
-  border:1px solid var(--line);  
-  outline:none;  
-}  
-input:focus,textarea:focus{border-color:var(--accent)}  
-textarea{min-height:100px;resize:vertical}  
-.status{font-size:13px;min-height:22px;color:var(--accent)}  
-.hidden{display:none!important}  
-footer{  
-  border-top:1px solid var(--line);  
-  padding:30px 20px;  
-  text-align:center;  
-  background:#0c0c13;  
-}  
-footer p{font-size:12px}  
-.small{font-size:12px}  
-#accountPanel,#adminLogin,#admin{scroll-margin-top:90px}  
-@media(max-width:600px){  
-  .nav{justify-content:center}  
-  nav{justify-content:center}  
-  .hero{min-height:390px}  
-  .wrap{padding:40px 17px}  
-  h2{font-size:25px}  
-}  
-</style>  </head>  <body>  <header>  
-  <div class="nav">  
-    <a class="brand" href="#home">MATT RIFE <span>FAN COMMUNITY</span></a>  
-    <nav>  
-      <a href="#home">Home</a>  
-      <a href="#about">About</a>  
-      <a href="#shows">Shows</a>  
-      <a href="#updates">Updates</a>  
-      <a href="#join">Join</a>  
-      <a href="#accountPanel">Account</a>  
-    </nav>  
-  </div>  
-</header>  <main>  <section class="hero" id="home">  
-  <div class="hero-inner">  
-    <div class="eyebrow">An independent fan community</div>  
-    <h1 id="headline">Welcome to the Matt Rife Fan Community.</h1>  
-    <p id="intro">A place for fans to connect, celebrate comedy, and share their appreciation for Matt Rife.</p>  
-    <a class="btn" href="#join">Join the community</a>  
-    <a class="btn secondary" href="#updates">Explore updates</a>  
-  </div>  
-</section>  <section class="wrap" id="about">  
-  <div class="section-heading">  
-    <div class="eyebrow">Our community</div>  
-    <h2 id="aboutTitle">About the community</h2>  
-    <p id="aboutText">This independent fan community is for people who enjoy Matt Rife's comedy and want to connect with other fans.</p>  
-  </div>  
-  <div class="notice">A community created by fans, for fans.</div>  
-</section>  <section class="wrap" id="shows">  
-  <div class="section-heading">  
-    <div class="eyebrow">Community board</div>  
-    <h2>Show announcements</h2>  
-    <p>Check official event sources before making plans or purchasing tickets.</p>  
-  </div>  
-  <div id="showList" class="grid">  
-    <div class="card"><p>No announcements have been posted yet.</p></div>  
-  </div>  
-</section>  <section class="wrap" id="updates">  
-  <div class="section-heading">  
-    <div class="eyebrow">What's happening</div>  
-    <h2>Community updates</h2>  
-  </div>  
-  <div id="updateList" class="grid">  
-    <div class="card"><p>No updates have been posted yet.</p></div>  
-  </div>  
-</section>  <section class="wrap" id="join">  
-  <div class="section-heading">  
-    <div class="eyebrow">Become part of it</div>  
-    <h2>Join the fan community</h2>  
-    <p>Create an account to become part of the community.</p>  
-  </div>    <div class="grid">  <div class="card">  
-  <h3>Create your account</h3>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#100b1c">
+  <meta name="description" content="An independent community for fans of Matt Rife to connect and celebrate comedy.">
+  <title>Matt Rife Fan Community</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #100b1c;
+      --bg-soft: #151023;
+      --panel: #1c1530;
+      --panel-2: #241b3a;
+      --text: #f7f3ff;
+      --muted: #b9aecb;
+      --muted-2: #9286a7;
+      --purple: #a987ff;
+      --lavender: #d2c0ff;
+      --pink: #e5b3e9;
+      --line: rgba(211, 192, 255, .16);
+      --danger: #ff9baf;
+      --success: #9ce4c0;
+      --shadow: 0 24px 70px rgba(0,0,0,.28);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0; min-width: 320px; background: var(--bg); color: var(--text);
+      font-family: 'DM Sans', Arial, sans-serif; line-height: 1.65;
+      background-image: radial-gradient(ellipse at 78% 0%, rgba(117,78,180,.16), transparent 34%),
+                        radial-gradient(ellipse at 0% 35%, rgba(92,59,145,.10), transparent 30%);
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button { cursor: pointer; }
+    .site-header { position: sticky; top: 0; z-index: 20; background: rgba(16,11,28,.88); backdrop-filter: blur(18px); border-bottom: 1px solid var(--line); }
+    .nav { max-width: 1160px; margin: auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .08em; font-size: 12px; white-space: nowrap; }
+    .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 11px; color: #1a1028; background: linear-gradient(135deg,var(--lavender),var(--purple)); font-family: 'Playfair Display',serif; font-size: 20px; box-shadow: 0 6px 22px rgba(169,135,255,.24); }
+    .brand span:last-child { color: var(--lavender); }
+    .nav-links { display: flex; align-items: center; gap: 23px; flex-wrap: wrap; }
+    .nav-links a { color: var(--muted); font-size: 13px; transition: color .2s; }
+    .nav-links a:hover { color: var(--lavender); }
+    .nav-join { padding: 9px 15px; border: 1px solid rgba(210,192,255,.34); border-radius: 999px; color: var(--lavender)!important; }
+    .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+    .hero::before, .hero::after { content: ''; position: absolute; border-radius: 50%; pointer-events: none; filter: blur(2px); }
+    .hero::before { width: 460px; height: 460px; right: -120px; top: -180px; background: radial-gradient(circle,rgba(155,112,235,.24),transparent 68%); }
+    .hero::after { width: 300px; height: 300px; right: 18%; bottom: -220px; background: radial-gradient(circle,rgba(229,179,233,.13),transparent 70%); }
+    .hero-inner { position: relative; z-index: 1; max-width: 1160px; min-height: 540px; margin: auto; padding: 94px 24px 88px; display: grid; grid-template-columns: minmax(0,1.2fr) minmax(250px,.8fr); align-items: center; gap: 45px; }
+    .eyebrow { color: var(--lavender); font-size: 11px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+    h1,h2,h3,p { margin-top: 0; }
+    h1 { max-width: 760px; margin: 17px 0 20px; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(42px,6.4vw,76px); line-height: 1.06; letter-spacing: -.035em; }
+    h1 em { color: var(--lavender); font-style: normal; }
+    .hero-copy { max-width: 610px; color: var(--muted); font-size: 17px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 28px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 45px; padding: 11px 19px; border: 1px solid transparent; border-radius: 999px; background: linear-gradient(135deg,var(--lavender),var(--purple)); color: #1a1028; font-weight: 800; font-size: 13px; transition: transform .2s, filter .2s; }
+    .button:hover { transform: translateY(-2px); filter: brightness(1.07); }
+    .button:disabled { opacity: .55; cursor: wait; transform: none; }
+    .button-quiet { color: var(--text); background: rgba(255,255,255,.035); border-color: var(--line); }
+    .button-danger { color: #ffe8ed; background: rgba(156,58,82,.28); border-color: rgba(255,155,175,.25); }
+    .hero-art { min-height: 310px; display: grid; place-items: center; }
+    .orbit-card { width: min(100%,330px); aspect-ratio: 4/4.5; position: relative; display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; overflow: hidden; border: 1px solid rgba(218,199,255,.25); border-radius: 28px; background: linear-gradient(145deg,rgba(91,67,133,.7),rgba(34,25,54,.94) 58%,rgba(25,17,39,.98)); box-shadow: var(--shadow); transform: rotate(3deg); }
+    .orbit-card::before { content: 'M'; position: absolute; top: -70px; right: -8px; font-family: 'Playfair Display',serif; font-size: 310px; line-height: 1; color: rgba(220,203,255,.08); }
+    .orbit-ring { position: absolute; width: 210px; height: 210px; top: 28px; left: 50%; transform: translateX(-50%); border: 1px solid rgba(220,203,255,.34); border-radius: 50%; box-shadow: 0 0 0 18px rgba(220,203,255,.035),0 0 0 38px rgba(220,203,255,.025); }
+    .orbit-star { position: absolute; top: 82px; left: calc(50% - 13px); color: var(--lavender); font-size: 27px; }
+    .orbit-caption { position: relative; z-index: 1; }
+    .orbit-caption strong { display: block; font-family: 'Playfair Display',serif; font-size: 27px; line-height: 1.15; }
+    .orbit-caption span { display: block; margin-top: 8px; color: var(--muted); font-size: 11px; letter-spacing: .15em; text-transform: uppercase; }
+    .wrap { max-width: 1160px; margin: auto; padding: 78px 24px; }
+    .section-top { max-width: 680px; margin-bottom: 30px; }
+    h2 { margin: 9px 0 12px; font-family: 'Playfair Display',Georgia,serif; font-size: clamp(30px,4vw,43px); line-height: 1.15; letter-spacing: -.02em; }
+    h3 { margin-bottom: 8px; font-size: 17px; }
+    .section-top p, .card p { color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 17px; }
+    .card, .admin-panel { padding: 25px; border: 1px solid var(--line); border-radius: 19px; background: linear-gradient(145deg,rgba(36,27,58,.88),rgba(25,19,40,.94)); box-shadow: 0 12px 38px rgba(0,0,0,.12); }
+    .card p:last-child { margin-bottom: 0; }
+    .card-icon { width: 39px; height: 39px; display: grid; place-items: center; margin-bottom: 18px; border-radius: 13px; color: var(--lavender); background: rgba(169,135,255,.13); font-size: 18px; }
+    .community-note { padding: 18px 21px; border: 1px solid rgba(210,192,255,.2); border-radius: 15px; color: var(--muted); background: rgba(169,135,255,.055); font-size: 13px; }
+    .two-col { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+    .auth-card h3 { font-family: 'Playfair Display',serif; font-size: 23px; }
+    .field { margin: 15px 0; }
+    label { display: block; margin-bottom: 7px; color: #ded4ef; font-size: 12px; font-weight: 700; }
+    input,textarea { width: 100%; padding: 13px 14px; border: 1px solid rgba(210,192,255,.18); border-radius: 11px; outline: none; color: var(--text); background: rgba(12,9,21,.72); transition: border-color .2s,box-shadow .2s; }
+    input:focus,textarea:focus { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(169,135,255,.12); }
+    input::placeholder,textarea::placeholder { color: #766b89; }
+    textarea { min-height: 105px; resize: vertical; }
+    .status { min-height: 22px; margin: 12px 0 0; color: var(--lavender); font-size: 12px; overflow-wrap: anywhere; }
+    .status.error { color: var(--danger); }
+    .status.success { color: var(--success); }
+    .small-note { color: var(--muted-2); font-size: 11px; }
+    .hidden { display: none!important; }
+    .member-panel { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .member-panel p { margin-bottom: 4px; color: var(--muted); }
+    .divider { height: 1px; margin: 23px 0; background: var(--line); }
+    .admin-panel { border-color: rgba(169,135,255,.3); }
+    .admin-section-title { margin: 0 0 12px; font-family: 'Playfair Display',serif; font-size: 22px; }
+    .admin-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .empty-card { grid-column: 1/-1; color: var(--muted); }
+    .post-tag { margin-bottom: 10px; color: var(--lavender); font-size: 10px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    .post-date { margin-top: 14px; color: var(--muted-2); font-size: 11px; }
+    footer { padding: 34px 24px; border-top: 1px solid var(--line); background: rgba(8,6,15,.55); text-align: center; }
+    footer p { margin: 4px 0; color: var(--muted-2); font-size: 11px; }
+    .footer-brand { color: var(--lavender); font-weight: 800; letter-spacing: .12em; font-size: 11px; }
+    @media(max-width:850px) { .hero-inner { grid-template-columns: 1fr .7fr; gap: 20px; } .grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .nav-links { gap: 14px; } }
+    @media(max-width:650px) {
+      .nav { padding: 12px 16px; flex-direction: column; gap: 10px; }
+      .nav-links { justify-content: center; gap: 12px 17px; }
+      .nav-links a { font-size: 12px; }
+      .hero-inner { min-height: auto; padding: 72px 20px 58px; grid-template-columns: 1fr; }
+      .hero-art { min-height: 245px; }
+      .orbit-card { width: 220px; aspect-ratio: 1/1.05; padding: 20px; }
+      .orbit-ring { width: 145px; height: 145px; top: 18px; }
+      .orbit-star { top: 54px; }
+      .orbit-card::before { font-size: 230px; top: -48px; }
+      .orbit-caption strong { font-size: 22px; }
+      .wrap { padding: 58px 18px; }
+      .grid,.two-col { grid-template-columns: 1fr; }
+      .card,.admin-panel { padding: 21px; }
+      .member-panel { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav">
+      <a class="brand" href="#home"><span class="brand-mark">M</span><span>MATT RIFE <span>FAN COMMUNITY</span></span></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#home">Home</a><a href="#about">About</a><a href="#shows">Shows</a><a href="#updates">Updates</a><a class="nav-join" href="#join">Join community</a><a href="#accountPanel">Account</a>
+      </nav>
+    </div>
+  </header>
 
-  <div class="field">  
-    <label for="signupName">Full name</label>  
-    <input id="signupName" type="text" autocomplete="name" placeholder="Your full name">  
-  </div>  
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">An independent fan community</div>
+          <h1 id="headline">Good comedy.<br><em>Great company.</em></h1>
+          <p class="hero-copy" id="intro">A place for fans to connect, celebrate comedy, and share their appreciation for Matt Rife.</p>
+          <div class="hero-actions"><a class="button" href="#join">Join the community</a><a class="button button-quiet" href="#updates">Explore updates</a></div>
+        </div>
+        <div class="hero-art" aria-hidden="true"><div class="orbit-card"><div class="orbit-ring"></div><div class="orbit-star">✦</div><div class="orbit-caption"><strong>Comedy brings<br>people together.</strong><span>For the fans • By the fans</span></div></div></div>
+      </div>
+    </section>
 
-  <div class="field">  
-    <label for="signupEmail">Email address</label>  
-    <input id="signupEmail" type="email" autocomplete="email" placeholder="Your email">  
-  </div>  
+    <section class="wrap" id="about">
+      <div class="section-top"><div class="eyebrow">The community</div><h2 id="aboutTitle">A place to share the laughs.</h2><p id="aboutText">This independent fan community is for people who enjoy Matt Rife's comedy and want to connect with other fans.</p></div>
+      <div class="grid">
+        <article class="card"><div class="card-icon">✦</div><h3>Connect with fans</h3><p>Meet people who enjoy the same comedy, share thoughts, and join friendly conversations.</p></article>
+        <article class="card"><div class="card-icon">◷</div><h3>Stay in the loop</h3><p>Find community posts and show-related announcements gathered in one place.</p></article>
+        <article class="card"><div class="card-icon">♡</div><h3>Celebrate comedy</h3><p>Enjoy a welcoming space built around laughter, shared interests, and fan appreciation.</p></article>
+      </div>
+      <p class="community-note" style="margin-top:18px">This is an independent, fan-run community. It is not Matt Rife's official website and is not endorsed by or affiliated with him or his representatives. Always verify event details through official event sources.</p>
+    </section>
 
-  <div class="field">  
-    <label for="signupPassword">Password</label>  
-    <input id="signupPassword" type="password" autocomplete="new-password" placeholder="At least 8 characters">  
-  </div>  
+    <section class="wrap" id="shows">
+      <div class="section-top"><div class="eyebrow">Community board</div><h2>Show announcements</h2><p>Community-shared show information. Confirm dates, venues, and ticket details with official event sources.</p></div>
+      <div id="showList" class="grid"><article class="card empty-card">No announcements have been posted yet.</article></div>
+    </section>
 
-  <button class="btn" id="signupButton" type="button">Create account</button>  
-  <p class="status" id="signupStatus" aria-live="polite"></p>  
-</div>  
+    <section class="wrap" id="updates">
+      <div class="section-top"><div class="eyebrow">What's happening</div><h2>Community updates</h2><p>News and messages shared by the community administrator.</p></div>
+      <div id="updateList" class="grid"><article class="card empty-card">No updates have been posted yet.</article></div>
+    </section>
 
-<div class="card">  
-  <h3>Already a member?</h3>  
+    <section class="wrap" id="join">
+      <div class="section-top"><div class="eyebrow">Become part of it</div><h2>Join the fan community.</h2><p>Create an account or sign in to access your member area.</p></div>
+      <div class="two-col">
+        <div class="card auth-card">
+          <h3>Create your account</h3>
+          <div class="field"><label for="signupName">Full name</label><input id="signupName" type="text" autocomplete="name" maxlength="100" placeholder="Your full name"></div>
+          <div class="field"><label for="signupEmail">Email address</label><input id="signupEmail" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com"></div>
+          <div class="field"><label for="signupPassword">Password</label><input id="signupPassword" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters"></div>
+          <button class="button" id="signupButton" type="button">Create account</button>
+          <p class="status" id="signupStatus" aria-live="polite"></p>
+          <p class="small-note">If email confirmation is enabled, check your inbox before signing in.</p>
+        </div>
+        <div class="card auth-card">
+          <h3>Welcome back</h3>
+          <div class="field"><label for="fanEmail">Email address</label><input id="fanEmail" type="email" autocomplete="username" placeholder="you@example.com"></div>
+          <div class="field"><label for="fanPassword">Password</label><input id="fanPassword" type="password" autocomplete="current-password" placeholder="Your password"></div>
+          <button class="button button-quiet" id="fanLoginButton" type="button">Log in</button>
+          <p class="status" id="fanLoginStatus" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
 
-  <div class="field">  
-    <label for="fanEmail">Email address</label>  
-    <input id="fanEmail" type="email" autocomplete="email" placeholder="Your email">  
-  </div>  
+    <section class="wrap hidden" id="accountPanel">
+      <div class="admin-panel member-panel"><div><div class="eyebrow">Member area</div><h2 style="margin-bottom:5px">Your account</h2><p id="accountName">You are logged in.</p><p id="accountEmail"></p></div><button class="button button-quiet" id="fanLogoutButton" type="button">Log out</button></div>
+    </section>
 
-  <div class="field">  
-    <label for="fanPassword">Password</label>  
-    <input id="fanPassword" type="password" autocomplete="current-password" placeholder="Your password">  
-  </div>  
+    <section class="wrap hidden" id="adminLogin">
+      <div class="admin-panel" style="max-width:560px;margin:auto"><div class="eyebrow">Restricted access</div><h2>Administrator login</h2>
+        <div class="field"><label for="adminEmail">Admin email</label><input id="adminEmail" type="email" autocomplete="username"></div>
+        <div class="field"><label for="adminPassword">Admin password</label><input id="adminPassword" type="password" autocomplete="current-password"></div>
+        <button class="button" id="adminLoginButton" type="button">Log in as administrator</button><p class="status" id="adminLoginStatus" aria-live="polite"></p>
+      </div>
+    </section>
 
-  <button class="btn secondary" id="fanLoginButton" type="button">Log in</button>  
-  <p class="status" id="fanLoginStatus" aria-live="polite"></p>  
-</div>
+    <section class="wrap hidden" id="admin">
+      <div class="admin-panel"><div class="eyebrow">Private site editor</div><h2>Administrator dashboard</h2><p class="small-note">Changes are saved to the existing Supabase site_content table.</p>
+        <div class="divider"></div><h3 class="admin-section-title">Edit homepage</h3>
+        <div class="field"><label for="editHeadline">Homepage headline</label><input id="editHeadline" type="text" maxlength="180"></div>
+        <div class="field"><label for="editIntro">Homepage introduction</label><textarea id="editIntro" maxlength="600"></textarea></div>
+        <div class="field"><label for="editAboutTitle">About heading</label><input id="editAboutTitle" type="text" maxlength="120"></div>
+        <div class="field"><label for="editAboutText">About description</label><textarea id="editAboutText" maxlength="1000"></textarea></div>
+        <div class="divider"></div><h3 class="admin-section-title">Add a show announcement</h3>
+        <div class="field"><label for="newShowTitle">Announcement title</label><input id="newShowTitle" type="text" maxlength="160" placeholder="Announcement title"></div>
+        <div class="field"><label for="newShowBody">Announcement details</label><textarea id="newShowBody" maxlength="1500" placeholder="Announcement details"></textarea></div>
+        <button class="button button-quiet" id="addShowButton" type="button">Add announcement</button>
+        <div class="divider"></div><h3 class="admin-section-title">Post a community update</h3>
+        <div class="field"><label for="newUpdate">Update message</label><textarea id="newUpdate" maxlength="1500" placeholder="Write your community update"></textarea></div>
+        <button class="button button-quiet" id="addUpdateButton" type="button">Add update</button>
+        <div class="divider"></div><div class="admin-actions"><button class="button" id="saveButton" type="button">Save website changes</button><button class="button button-danger" id="adminLogoutButton" type="button">Admin log out</button></div>
+        <p class="status" id="adminStatus" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
 
-  </div>  
-</section>  <section class="wrap hidden" id="accountPanel">  
-  <div class="adminbox">  
-    <div class="eyebrow">Member area</div>  
-    <h2>Your account</h2>  
-    <p id="accountName">You are logged in.</p>  
-    <p id="accountEmail"></p>  
-    <button class="btn secondary" id="fanLogoutButton" type="button">Log out</button>  
-  </div>  
-</section>  <section class="wrap hidden" id="adminLogin">  
-  <div class="adminbox">  
-    <div class="eyebrow">Restricted access</div>  
-    <h2>Administrator login</h2>  <div class="field">  
-  <label for="adminEmail">Admin email</label>  
-  <input id="adminEmail" type="email" autocomplete="username">  
-</div>  
+  <footer><div class="footer-brand">MATT RIFE FAN COMMUNITY</div><p>Independent fan-run community. Not an official website or affiliated with Matt Rife.</p><p>© <span id="year"></span> Fan Community</p></footer>
 
-<div class="field">  
-  <label for="adminPassword">Admin password</label>  
-  <input id="adminPassword" type="password" autocomplete="current-password">  
-</div>  
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script>
+    'use strict';
 
-<button class="btn" id="adminLoginButton" type="button">Log in as administrator</button>  
-<p class="status" id="adminLoginStatus" aria-live="polite"></p>
+    // Existing Supabase project configuration. The publishable key is intended for browser use.
+    const SUPABASE_URL = 'https://rdwuolmnoifltvkafihv.supabase.co';
+    const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_MlFmCF5tect0E0TuPGzEng_3gTE4OU2';
+    const ADMIN_ID = '04ba51c7-b579-4aa6-95f1-919e632d4fbf';
+    const SITE_URL = 'https://lydiaviolet.github.io/matt-rife-fan-website/';
 
-  </div>  
-</section>  <section class="wrap hidden" id="admin">  
-  <div class="adminbox">  
-    <div class="eyebrow">Private site editor</div>  
-    <h2>Administrator dashboard</h2>  
-    <p>You are signed in with the authorised administrator account.</p>  <div class="divider"></div>  
-<h3>Edit homepage</h3>  
+    const byId = (id) => document.getElementById(id);
+    const adminMode = new URLSearchParams(window.location.search).get('admin') === '1';
 
-<div class="field">  
-  <label for="editHeadline">Homepage headline</label>  
-  <input id="editHeadline" type="text">  
-</div>  
-
-<div class="field">  
-  <label for="editIntro">Homepage introduction</label>  
-  <textarea id="editIntro"></textarea>  
-</div>  
-
-<div class="field">  
-  <label for="editAboutTitle">About heading</label>  
-  <input id="editAboutTitle" type="text">  
-</div>  
-
-<div class="field">  
-  <label for="editAboutText">About description</label>  
-  <textarea id="editAboutText"></textarea>  
-</div>  
-
-<div class="divider"></div>  
-<h3>Add a show announcement</h3>  
-
-<div class="field">  
-  <label for="newShowTitle">Announcement title</label>  
-  <input id="newShowTitle" type="text" placeholder="Announcement title">  
-</div>  
-
-<div class="field">  
-  <label for="newShowBody">Announcement details</label>  
-  <textarea id="newShowBody" placeholder="Announcement details"></textarea>  
-</div>  
-
-<button class="btn secondary" id="addShowButton" type="button">Add announcement</button>  
-
-<div class="divider"></div>  
-<h3>Post a community update</h3>  
-
-<div class="field">  
-  <label for="newUpdate">Update message</label>  
-  <textarea id="newUpdate" placeholder="Write your community update"></textarea>  
-</div>  
-
-<button class="btn secondary" id="addUpdateButton" type="button">Add update</button>  
-
-<div class="divider"></div>  
-<button class="btn" id="saveButton" type="button">Save website changes</button>  
-<button class="btn danger" id="adminLogoutButton" type="button">Admin log out</button>  
-<p class="status" id="adminStatus" aria-live="polite"></p>  
-
-<div class="divider"></div>  
-<p class="small">Website changes are stored in your Supabase database.</p>
-
-  </div>  
-</section>  </main>  <footer>  
-  <p>Matt Rife Fan Community</p>  
-  <p>Independent fan-run community.</p>  
-  <p>© <span id="year"></span> Fan Community</p>  
-</footer>  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>  <script>  
-"use strict";  
-  
-/* SUPABASE CONFIGURATION */  
-const SUPABASE_URL = "https://rdwuolmnoifltvkafihv.supabase.co";  
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_MlFmCF5tect0E0TuPGzEng_3gTE4OU2";  
-const ADMIN_ID = "04ba51c7-b579-4aa6-95f1-919e632d4fbf";  
-  
-/* SHORTCUTS */  
-const byId = id => document.getElementById(id);  
-  
-function showStatus(id, message) {  
-  const element = byId(id);  
-  if (element) element.textContent = message;  
-}  
-  
-/* CHECK SUPABASE LIBRARY */  
-if (!window.supabase || !window.supabase.createClient) {  
-  showStatus("signupStatus", "Connection library failed to load. Please refresh the page.");  
-  throw new Error("Supabase JavaScript library did not load.");  
-}  
-  
-/* CONNECT TO SUPABASE */  
-const supabaseClient = window.supabase.createClient(  
-  SUPABASE_URL,  
-  SUPABASE_PUBLISHABLE_KEY  
-);  
-  
-/* DEFAULT WEBSITE CONTENT */  
-const initialContent = {  
-  headline: "Welcome to the Matt Rife Fan Community.",  
-  intro: "A place for fans to connect, celebrate comedy, and share their appreciation for Matt Rife.",  
-  aboutTitle: "About the community",  
-  aboutText: "This independent fan community is for people who enjoy Matt Rife's comedy and want to connect with other fans.",  
-  shows: [],  
-  updates: []  
-};  
-  
-let siteData = {  
-  ...initialContent,  
-  shows: [],  
-  updates: []  
-};  
-  
-let contentRowId = null;  
-let currentUser = null;  
-  
-/* ADMIN ACCESS */  
-function isAdmin(user) {  
-  return !!user && user.id === ADMIN_ID;  
-}  
-  
-/* SHOW ADMIN LOGIN ONLY ON PRIVATE URL */  
-const adminMode = new URLSearchParams(window.location.search).get("admin") === "1";  
-  
-if (adminMode) {  
-  byId("adminLogin").classList.remove("hidden");  
-}  
-  
-/* LOAD WEBSITE CONTENT */  
-async function loadSiteContent() {  
-  try {  
-    const { data, error } = await supabaseClient  
-      .from("site_content")  
-      .select("id, content_value")  
-      .eq("content_key", "site_data")  
-      .limit(1);  
-  
-    if (error) throw error;  
-  
-    if (data && data.length > 0) {  
-      contentRowId = data[0].id;  
-  
-      try {  
-        const saved = JSON.parse(data[0].content_value);  
-  
-        siteData = {  
-          ...initialContent,  
-          ...saved,  
-          shows: Array.isArray(saved.shows) ? saved.shows : [],  
-          updates: Array.isArray(saved.updates) ? saved.updates : []  
-        };  
-      } catch (parseError) {  
-        console.error("Saved content could not be read:", parseError);  
-      }  
-    }  
-  
-    renderSite();  
-    fillEditor();  
-  
-  } catch (error) {  
-    console.error("Website content loading failed:", error);  
-    showStatus("adminStatus", "Could not load saved content: " + error.message);  
-    renderSite();  
-  }  
-}  
-  
-/* SAVE WEBSITE CONTENT */  
-async function saveSiteContent() {  
-  const contentValue = JSON.stringify(siteData);  
-  
-  if (contentRowId) {  
-    const { error } = await supabaseClient  
-      .from("site_content")  
-      .update({  
-        content_value: contentValue,  
-        updated_at: new Date().toISOString()  
-      })  
-      .eq("id", contentRowId);  
-  
-    if (error) throw error;  
-  
-  } else {  
-    const { data, error } = await supabaseClient  
-      .from("site_content")  
-      .insert({  
-        content_key: "site_data",  
-        content_value: contentValue  
-      })  
-      .select("id")  
-      .single();  
-  
-    if (error) throw error;  
-    contentRowId = data.id;  
-  }  
-}  
-  
-/* DISPLAY CONTENT */  
-function renderSite() {  
-  byId("headline").textContent = siteData.headline;  
-  byId("intro").textContent = siteData.intro;  
-  byId("aboutTitle").textContent = siteData.aboutTitle;  
-  byId("aboutText").textContent = siteData.aboutText;  
-  
-  const showList = byId("showList");  
-  showList.replaceChildren();  
-  
-  if (!siteData.shows.length) {  
-    const empty = document.createElement("div");  
-    empty.className = "card";  
-    empty.textContent = "No announcements have been posted yet.";  
-    showList.appendChild(empty);  
-  }  
-  
-  siteData.shows.forEach(show => {  
-    const card = document.createElement("div");  
-    card.className = "card";  
-  
-    const tag = document.createElement("div");  
-    tag.className = "mini";  
-    tag.textContent = "Announcement";  
-  
-    const title = document.createElement("h3");  
-    title.textContent = show.title || "Community announcement";  
-  
-    const body = document.createElement("p");  
-    body.textContent = show.body || "";  
-  
-    card.append(tag, title, body);  
-    showList.appendChild(card);  
-  });  
-  
-  const updateList = byId("updateList");  
-  updateList.replaceChildren();  
-  
-  if (!siteData.updates.length) {  
-    const empty = document.createElement("div");  
-    empty.className = "card";  
-    empty.textContent = "No updates have been posted yet.";  
-    updateList.appendChild(empty);  
-  }  
-  
-  siteData.updates.forEach(update => {  
-    const card = document.createElement("div");  
-    card.className = "card";  
-  
-    const tag = document.createElement("div");  
-    tag.className = "mini";  
-    tag.textContent = "Community update";  
-  
-    const body = document.createElement("p");  
-    body.textContent = update;  
-  
-    card.append(tag, body);  
-    updateList.appendChild(card);  
-  });  
-}  
-  
-/* FILL ADMIN EDITOR */  
-function fillEditor() {  
-  byId("editHeadline").value = siteData.headline;  
-  byId("editIntro").value = siteData.intro;  
-  byId("editAboutTitle").value = siteData.aboutTitle;  
-  byId("editAboutText").value = siteData.aboutText;  
-}  
-  
-/* MEMBER ACCOUNT DISPLAY */  
-function updateAccountDisplay(user) {  
-  currentUser = user || null;  
-  
-  const loggedIn = !!user;  
-  
-  byId("accountPanel").classList.toggle("hidden", !loggedIn);  
-  byId("admin").classList.toggle("hidden", !isAdmin(user));  
-  
-  if (loggedIn) {  
-    const name = user.user_metadata?.full_name || "Community member";  
-    byId("accountName").textContent = "Welcome, " + name;  
-    byId("accountEmail").textContent = user.email || "";  
-  }  
-  
-  if (isAdmin(user)) {  
-    byId("adminLogin").classList.add("hidden");  
-    fillEditor();  
-  } else if (adminMode) {  
-    byId("adminLogin").classList.remove("hidden");  
-  }  
-}  
-  
-/* CREATE FAN PROFILE */  
-async function ensureFanProfile(user) {  
-  if (!user || isAdmin(user)) return;  
-  
-  const { data, error } = await supabaseClient  
-    .from("fan_profiles")  
-    .select("id")  
-    .eq("user_id", user.id)  
-    .limit(1);  
-  
-  if (error) {  
-    console.error("Profile lookup failed:", error);  
-    return;  
-  }  
-  
-  if (data && data.length > 0) return;  
-  
-  const { error: insertError } = await supabaseClient  
-    .from("fan_profiles")  
-    .insert({  
-      user_id: user.id,  
-      full_name: user.user_metadata?.full_name || "",  
-      email: user.email || ""  
-    });  
-  
-  if (insertError) {  
-    console.error("Profile creation failed:", insertError);  
-  }  
-}  
-  
-/* CREATE ACCOUNT */  
-byId("signupButton").addEventListener("click", async () => {  
-  const button = byId("signupButton");  
-  const fullName = byId("signupName").value.trim();  
-  const email = byId("signupEmail").value.trim();  
-  const password = byId("signupPassword").value;  
-  
-  if (!fullName || !email || password.length < 8) {  
-    showStatus("signupStatus", "Enter your name, valid email and a password of at least 8 characters.");  
-    return;  
-  }  
-  
-  button.disabled = true;  
-  showStatus("signupStatus", "Creating your account...");  
-  
-  try {  
-    const { data, error } = await supabaseClient.auth.signUp({  
-      email,  
-      password,  
-      options: {  
-        data: { full_name: fullName }  
-      }  
-    });  
-  
-    if (error) throw error;  
-  
-    if (data.session && data.user) {  
-      await ensureFanProfile(data.user);  
-      updateAccountDisplay(data.user);  
-      showStatus("signupStatus", "Your account has been created. Welcome!");  
-    } else {  
-      showStatus("signupStatus", "Account created. Check your email to confirm it, then log in.");  
-    }  
-  
-  } catch (error) {  
-    console.error("Signup failed:", error);  
-    showStatus("signupStatus", error.message || "Account creation failed. Please try again.");  
-  } finally {  
-    button.disabled = false;  
-  }  
-});  
-  
-/* FAN LOGIN */  
-byId("fanLoginButton").addEventListener("click", async () => {  
-  const button = byId("fanLoginButton");  
-  const email = byId("fanEmail").value.trim();  
-  const password = byId("fanPassword").value;  
-  
-  if (!email || !password) {  
-    showStatus("fanLoginStatus", "Enter your email and password.");  
-    return;  
-  }  
-  
-  button.disabled = true;  
-  showStatus("fanLoginStatus", "Signing in...");  
-  
-  try {  
-    const { data, error } = await supabaseClient.auth.signInWithPassword({  
-      email,  
-      password  
-    });  
-  
-    if (error) throw error;  
-  
-    await ensureFanProfile(data.user);  
-    updateAccountDisplay(data.user);  
-    showStatus("fanLoginStatus", "You are logged in.");  
-  
-  } catch (error) {  
-    console.error("Login failed:", error);  
-    showStatus("fanLoginStatus", error.message || "Login failed.");  
-  } finally {  
-    button.disabled = false;  
-  }  
-});  
-  
-/* FAN LOGOUT */  
-byId("fanLogoutButton").addEventListener("click", async () => {  
-  const { error } = await supabaseClient.auth.signOut();  
-  
-  if (error) {  
-    alert(error.message);  
-    return;  
-  }  
-  
-  updateAccountDisplay(null);  
-});  
-  
-/* ADMIN LOGIN */  
-byId("adminLoginButton").addEventListener("click", async () => {  
-  const button = byId("adminLoginButton");  
-  const email = byId("adminEmail").value.trim();  
-  const password = byId("adminPassword").value;  
-  
-  if (!email || !password) {  
-    showStatus("adminLoginStatus", "Enter your administrator email and password.");  
-    return;  
-  }  
-  
-  button.disabled = true;  
-  showStatus("adminLoginStatus", "Checking administrator login...");  
-  
-  try {  
-    const { data, error } = await supabaseClient.auth.signInWithPassword({  
-      email,  
-      password  
-    });  
-  
-    if (error) throw error;  
-  
-    if (!data.user || !isAdmin(data.user)) {  
-      await supabaseClient.auth.signOut();  
-      throw new Error("This account is not authorised as a 
-dministrator.");
+    function setStatus(id, message, type = '') {
+      const el = byId(id);
+      if (!el) return;
+      el.textContent = message || '';
+      el.classList.remove('error', 'success');
+      if (type) el.classList.add(type);
     }
 
-    updateAccountDisplay(data.user);
-    showStatus("adminLoginStatus", "Administrator login successful.");
-    byId("admin").scrollIntoView({ behavior: "smooth" });
+    function setBusy(button, busy, busyText) {
+      if (!button) return;
+      if (busy) {
+        button.dataset.originalText = button.textContent;
+        button.textContent = busyText || 'Please wait…';
+        button.disabled = true;
+      } else {
+        button.textContent = button.dataset.originalText || button.textContent;
+        button.disabled = false;
+      }
+    }
 
-  } catch (error) {
-    console.error("Admin login failed:", error);
-    showStatus("adminLoginStatus", error.message || "Administrator login failed.");
-  } finally {
-    button.disabled = false;
-  }
-});
+    if (!window.supabase || typeof window.supabase.createClient !== 'function') {
+      setStatus('signupStatus', 'The secure connection library did not load. Check your internet connection and refresh.', 'error');
+      throw new Error('Supabase JavaScript library did not load.');
+    }
 
-/* ADMIN LOGOUT */
-byId("adminLogoutButton").addEventListener("click", async () => {
-  const { error } = await supabaseClient.auth.signOut();
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
-  if (error) {
-    showStatus("adminStatus", error.message);
-    return;
-  }
+    const defaultContent = {
+      headline: 'Good comedy. Great company.',
+      intro: 'A place for fans to connect, celebrate comedy, and share their appreciation for Matt Rife.',
+      aboutTitle: 'A place to share the laughs.',
+      aboutText: "This independent fan community is for people who enjoy Matt Rife's comedy and want to connect with other fans.",
+      shows: [],
+      updates: []
+    };
 
-  updateAccountDisplay(null);
-  byId("adminLogin").classList.toggle("hidden", !adminMode);
-  showStatus("adminLoginStatus", "You have logged out.");
-});
+    let siteData = { ...defaultContent, shows: [], updates: [] };
+    let contentRowId = null;
+    let currentUser = null;
 
-/* ADD SHOW ANNOUNCEMENT */
-byId("addShowButton").addEventListener("click", () => {
-  if (!isAdmin(currentUser)) return;
+    function isAdmin(user) {
+      return Boolean(user && user.id === ADMIN_ID);
+    }
 
-  const title = byId("newShowTitle").value.trim();
-  const body = byId("newShowBody").value.trim();
+    function safeDate(value) {
+      if (!value) return '';
+      const date = new Date(value);
+      return Number.isNaN(date.getTime()) ? '' : date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+    }
 
-  if (!title || !body) {
-    showStatus("adminStatus", "Enter the announcement title and details first.");
-    return;
-  }
+    function makeCard(tagText, titleText, bodyText, dateText) {
+      const card = document.createElement('article');
+      card.className = 'card';
+      const tag = document.createElement('div');
+      tag.className = 'post-tag';
+      tag.textContent = tagText;
+      card.appendChild(tag);
+      if (titleText) {
+        const title = document.createElement('h3');
+        title.textContent = titleText;
+        card.appendChild(title);
+      }
+      const body = document.createElement('p');
+      body.textContent = bodyText || '';
+      card.appendChild(body);
+      if (dateText) {
+        const date = document.createElement('div');
+        date.className = 'post-date';
+        date.textContent = dateText;
+        card.appendChild(date);
+      }
+      return card;
+    }
 
-  siteData.shows.unshift({ title, body });
+    function renderList(containerId, items, kind) {
+      const container = byId(containerId);
+      container.replaceChildren();
+      if (!items.length) {
+        const empty = document.createElement('article');
+        empty.className = 'card empty-card';
+        empty.textContent = kind === 'show' ? 'No announcements have been posted yet.' : 'No updates have been posted yet.';
+        container.appendChild(empty);
+        return;
+      }
+      items.forEach((item) => {
+        if (kind === 'show') {
+          container.appendChild(makeCard('Show announcement', item.title || 'Community announcement', item.body || '', safeDate(item.created_at)));
+        } else {
+          const value = typeof item === 'string' ? item : (item && item.body) || '';
+          container.appendChild(makeCard('Community update', '', value, safeDate(item && item.created_at)));
+        }
+      });
+    }
 
-  byId("newShowTitle").value = "";
-  byId("newShowBody").value = "";
+    function renderSite() {
+      byId('headline').textContent = siteData.headline || defaultContent.headline;
+      byId('intro').textContent = siteData.intro || '';
+      byId('aboutTitle').textContent = siteData.aboutTitle || defaultContent.aboutTitle;
+      byId('aboutText').textContent = siteData.aboutText || '';
+      renderList('showList', siteData.shows, 'show');
+      renderList('updateList', siteData.updates, 'update');
+    }
 
-  renderSite();
-  showStatus("adminStatus", "Announcement added. Press Save website changes to publish it.");
-});
+    function fillEditor() {
+      byId('editHeadline').value = siteData.headline || '';
+      byId('editIntro').value = siteData.intro || '';
+      byId('editAboutTitle').value = siteData.aboutTitle || '';
+      byId('editAboutText').value = siteData.aboutText || '';
+    }
 
-/* ADD COMMUNITY UPDATE */
-byId("addUpdateButton").addEventListener("click", () => {
-  if (!isAdmin(currentUser)) return;
+    function updateAccountDisplay(user) {
+      currentUser = user || null;
+      const loggedIn = Boolean(user);
+      const admin = isAdmin(user);
+      byId('accountPanel').classList.toggle('hidden', !loggedIn);
+      byId('admin').classList.toggle('hidden', !admin);
+      if (loggedIn) {
+        const name = user.user_metadata && user.user_metadata.full_name ? user.user_metadata.full_name : 'Community member';
+        byId('accountName').textContent = 'Welcome, ' + name;
+        byId('accountEmail').textContent = user.email || '';
+      }
+      if (admin) {
+        byId('adminLogin').classList.add('hidden');
+        fillEditor();
+      } else if (adminMode) {
+        byId('adminLogin').classList.remove('hidden');
+      }
+    }
 
-  const update = byId("newUpdate").value.trim();
+    async function loadSiteContent() {
+      try {
+        // The existing table has no unique constraint on content_key; choose the most recently updated matching row.
+        const { data, error } = await supabaseClient
+          .from('site_content')
+          .select('id, content_value, updated_at')
+          .eq('content_key', 'site_data')
+          .order('updated_at', { ascending: false })
+          .limit(1);
+        if (error) throw error;
+        if (data && data.length) {
+          contentRowId = data[0].id;
+          const saved = typeof data[0].content_value === 'string' ? JSON.parse(data[0].content_value) : data[0].content_value;
+          siteData = {
+            ...defaultContent,
+            ...(saved && typeof saved === 'object' ? saved : {}),
+            shows: saved && Array.isArray(saved.shows) ? saved.shows : [],
+            updates: saved && Array.isArray(saved.updates) ? saved.updates : []
+          };
+        }
+      } catch (error) {
+        console.error('Website content loading failed:', error);
+        setStatus('adminStatus', 'Could not load saved content: ' + (error.message || 'Unknown database error.'), 'error');
+      }
+      renderSite();
+      fillEditor();
+    }
 
-  if (!update) {
-    showStatus("adminStatus", "Write an update first.");
-    return;
-  }
+    async function saveSiteContent() {
+      const contentValue = JSON.stringify(siteData);
+      if (contentRowId) {
+        const { error } = await supabaseClient
+          .from('site_content')
+          .update({ content_value: contentValue, updated_at: new Date().toISOString() })
+          .eq('id', contentRowId);
+        if (error) throw error;
+      } else {
+        const { data, error } = await supabaseClient
+          .from('site_content')
+          .insert({ content_key: 'site_data', content_value: contentValue })
+          .select('id')
+          .single();
+        if (error) throw error;
+        contentRowId = data.id;
+      }
+    }
 
-  siteData.updates.unshift(update);
-  byId("newUpdate").value = "";
+    async function ensureFanProfile(user) {
+      if (!user) return false;
+      if (isAdmin(user)) return true;
+      const { data, error } = await supabaseClient
+        .from('fan_profiles')
+        .select('id')
+        .eq('user_id', user.id)
+        .limit(1);
+      if (error) {
+        console.error('Profile lookup failed:', error);
+        return false;
+      }
+      if (data && data.length) return true;
+      const { error: insertError } = await supabaseClient.from('fan_profiles').insert({
+        user_id: user.id,
+        full_name: (user.user_metadata && user.user_metadata.full_name) || '',
+        email: user.email || ''
+      });
+      if (insertError) {
+        console.error('Profile creation failed:', insertError);
+        return false;
+      }
+      return true;
+    }
 
-  renderSite();
-  showStatus("adminStatus", "Update added. Press Save website changes to publish it.");
-});
+    byId('signupButton').addEventListener('click', async () => {
+      const button = byId('signupButton');
+      const fullName = byId('signupName').value.trim();
+      const email = byId('signupEmail').value.trim();
+      const password = byId('signupPassword').value;
+      if (!fullName || !email || password.length < 8) {
+        setStatus('signupStatus', 'Enter your name, a valid email address, and a password of at least 8 characters.', 'error');
+        return;
+      }
+      setBusy(button, true, 'Creating account…');
+      setStatus('signupStatus', 'Creating your account…');
+      try {
+        const { data, error } = await supabaseClient.auth.signUp({
+          email,
+          password,
+          options: { data: { full_name: fullName }, emailRedirectTo: SITE_URL }
+        });
+        if (error) throw error;
+        if (data.session && data.user) {
+          const profileSaved = await ensureFanProfile(data.user);
+          updateAccountDisplay(data.user);
+          setStatus('signupStatus', profileSaved ? 'Your account is ready. Welcome to the community!' : 'Your login was created, but your member profile could not be saved. Please contact the site administrator.', profileSaved ? 'success' : 'error');
+          byId('accountPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          setStatus('signupStatus', 'Account created. Check your email for the confirmation link, then log in.', 'success');
+        }
+      } catch (error) {
+        console.error('Signup failed:', error);
+        setStatus('signupStatus', error.message || 'Account creation failed. Please try again.', 'error');
+      } finally {
+        setBusy(button, false);
+      }
+    });
 
-/* SAVE WEBSITE CHANGES */
-byId("saveButton").addEventListener("click", async () => {
-  if (!isAdmin(currentUser)) {
-    showStatus("adminStatus", "Administrator access required.");
-    return;
-  }
+    byId('fanLoginButton').addEventListener('click', async () => {
+      const button = byId('fanLoginButton');
+      const email = byId('fanEmail').value.trim();
+      const password = byId('fanPassword').value;
+      if (!email || !password) {
+        setStatus('fanLoginStatus', 'Enter your email address and password.', 'error');
+        return;
+      }
+      setBusy(button, true, 'Signing in…');
+      setStatus('fanLoginStatus', 'Signing in…');
+      try {
+        const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+        const profileSaved = await ensureFanProfile(data.user);
+        updateAccountDisplay(data.user);
+        setStatus('fanLoginStatus', profileSaved ? 'You are logged in.' : 'You are logged in, but your member profile could not be loaded or saved.', profileSaved ? 'success' : 'error');
+        byId('accountPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } catch (error) {
+        console.error('Member login failed:', error);
+        setStatus('fanLoginStatus', error.message || 'Login failed. Check your details and try again.', 'error');
+      } finally {
+        setBusy(button, false);
+      }
+    });
 
-  siteData.headline = byId("editHeadline").value.trim();
-  siteData.intro = byId("editIntro").value.trim();
-  siteData.aboutTitle = byId("editAboutTitle").value.trim();
-  siteData.aboutText = byId("editAboutText").value.trim();
+    async function logOut(statusId) {
+      const { error } = await supabaseClient.auth.signOut();
+      if (error) throw error;
+      updateAccountDisplay(null);
+      if (statusId) setStatus(statusId, 'You have logged out.', 'success');
+    }
 
-  showStatus("adminStatus", "Saving website changes...");
+    byId('fanLogoutButton').addEventListener('click', async () => {
+      try { await logOut('fanLoginStatus'); }
+      catch (error) { setStatus('fanLoginStatus', error.message || 'Could not log out.', 'error'); }
+    });
 
-  try {
-    await saveSiteContent();
-    renderSite();
-    showStatus("adminStatus", "Your website changes have been saved successfully.");
-  } catch (error) {
-    console.error("Save failed:", error);
-    showStatus("adminStatus", "Save failed: " + error.message);
-  }
-});
+    byId('adminLoginButton').addEventListener('click', async () => {
+      const button = byId('adminLoginButton');
+      const email = byId('adminEmail').value.trim();
+      const password = byId('adminPassword').value;
+      if (!email || !password) {
+        setStatus('adminLoginStatus', 'Enter your administrator email and password.', 'error');
+        return;
+      }
+      setBusy(button, true, 'Checking access…');
+      setStatus('adminLoginStatus', 'Checking administrator access…');
+      try {
+        const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+        if (!data.user || !isAdmin(data.user)) {
+          await supabaseClient.auth.signOut();
+          throw new Error('This account is not authorised as an administrator.');
+        }
+        updateAccountDisplay(data.user);
+        setStatus('adminLoginStatus', 'Administrator login successful.', 'success');
+        byId('admin').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } catch (error) {
+        console.error('Admin login failed:', error);
+        setStatus('adminLoginStatus', error.message || 'Administrator login failed.', 'error');
+      } finally {
+        setBusy(button, false);
+      }
+    });
 
-/* START WEBSITE */
-async function startWebsite() {
-  byId("year").textContent = new Date().getFullYear();
+    byId('adminLogoutButton').addEventListener('click', async () => {
+      try {
+        await logOut('adminLoginStatus');
+        if (adminMode) byId('adminLogin').classList.remove('hidden');
+      } catch (error) {
+        setStatus('adminStatus', error.message || 'Could not log out.', 'error');
+      }
+    });
 
-  await loadSiteContent();
+    byId('addShowButton').addEventListener('click', () => {
+      if (!isAdmin(currentUser)) return setStatus('adminStatus', 'Administrator access is required.', 'error');
+      const title = byId('newShowTitle').value.trim();
+      const body = byId('newShowBody').value.trim();
+      if (!title || !body) return setStatus('adminStatus', 'Enter the announcement title and details first.', 'error');
+      siteData.shows.unshift({ title, body, created_at: new Date().toISOString() });
+      byId('newShowTitle').value = '';
+      byId('newShowBody').value = '';
+      renderSite();
+      setStatus('adminStatus', 'Announcement added. Select “Save website changes” to publish it.', 'success');
+    });
 
-  try {
-    const { data, error } = await supabaseClient.auth.getSession();
+    byId('addUpdateButton').addEventListener('click', () => {
+      if (!isAdmin(currentUser)) return setStatus('adminStatus', 'Administrator access is required.', 'error');
+      const update = byId('newUpdate').value.trim();
+      if (!update) return setStatus('adminStatus', 'Write an update first.', 'error');
+      siteData.updates.unshift({ body: update, created_at: new Date().toISOString() });
+      byId('newUpdate').value = '';
+      renderSite();
+      setStatus('adminStatus', 'Update added. Select “Save website changes” to publish it.', 'success');
+    });
 
-    if (error) throw error;
+    byId('saveButton').addEventListener('click', async () => {
+      if (!isAdmin(currentUser)) return setStatus('adminStatus', 'Administrator access is required.', 'error');
+      const headline = byId('editHeadline').value.trim();
+      const intro = byId('editIntro').value.trim();
+      const aboutTitle = byId('editAboutTitle').value.trim();
+      const aboutText = byId('editAboutText').value.trim();
+      if (!headline || !intro || !aboutTitle || !aboutText) return setStatus('adminStatus', 'Please complete all homepage text fields before saving.', 'error');
+      siteData.headline = headline;
+      siteData.intro = intro;
+      siteData.aboutTitle = aboutTitle;
+      siteData.aboutText = aboutText;
+      const button = byId('saveButton');
+      setBusy(button, true, 'Saving changes…');
+      setStatus('adminStatus', 'Saving website changes…');
+      try {
+        await saveSiteContent();
+        renderSite();
+        setStatus('adminStatus', 'Website changes saved successfully.', 'success');
+      } catch (error) {
+        console.error('Website save failed:', error);
+        setStatus('adminStatus', 'Save failed: ' + (error.message || 'Unknown database error.'), 'error');
+      } finally {
+        setBusy(button, false);
+      }
+    });
 
-    const user = data.session?.user || null;
-    updateAccountDisplay(user);
+    async function startWebsite() {
+      byId('year').textContent = new Date().getFullYear();
+      if (adminMode) byId('adminLogin').classList.remove('hidden');
+      await loadSiteContent();
+      try {
+        const { data, error } = await supabaseClient.auth.getSession();
+        if (error) throw error;
+        const user = data.session ? data.session.user : null;
+        updateAccountDisplay(user);
+        if (user && !isAdmin(user)) await ensureFanProfile(user);
+      } catch (error) {
+        console.error('Session check failed:', error);
+        setStatus('fanLoginStatus', 'Could not check your login session. Refresh the page and try again.', 'error');
+      }
+    }
 
-    if (user) await ensureFanProfile(user);
+    // Keep this callback synchronous; avoid making Supabase requests inside onAuthStateChange.
+    supabaseClient.auth.onAuthStateChange((_event, session) => {
+      updateAccountDisplay(session ? session.user : null);
+    });
 
-  } catch (error) {
-    console.error("Session check failed:", error);
-    showStatus("signupStatus", "Could not check your login session. Please refresh.");
-  }
-}
-
-/* AUTHENTICATION CHANGES */
-supabaseClient.auth.onAuthStateChange((_event, session) => {
-  updateAccountDisplay(session?.user || null);
-});
-
-/* RUN WEBSITE */
-startWebsite();
-
-</script>
+    startWebsite();
+  </script>
 </body>
 </html>
