@@ -451,17 +451,57 @@
     }
 
     async function ensureFanProfile(user) {
-      if (!user) return false;
-      if (isAdmin(user)) return true;
-      const { data, error } = await supabaseClient
-        .from('fan_profiles')
-        .select('id')
-        .eq('user_id', user.id)
-        .limit(1);
-      if (error) {
-        console.error('Profile lookup failed:', error);
-        return false;
-      }
+  if (!user) return false;
+  if (isAdmin(user)) return true;
+
+  const metadata = user.user_metadata || {};
+
+  const profile = {
+    user_id: user.id,
+    full_name: metadata.full_name || '',
+    email: user.email || '',
+    date_of_birth: metadata.date_of_birth || null,
+    country: metadata.country || '',
+    gender: metadata.gender || '',
+    phone: metadata.phone || ''
+  };
+
+  const { data, error } = await supabaseClient
+    .from('fan_profiles')
+    .select('id')
+    .eq('user_id', user.id)
+    .limit(1);
+
+  if (error) {
+    console.error('Profile lookup failed:', error);
+    return false;
+  }
+
+  if (data && data.length) {
+    const { error: updateError } = await supabaseClient
+      .from('fan_profiles')
+      .update(profile)
+      .eq('user_id', user.id);
+
+    if (updateError) {
+      console.error('Profile update failed:', updateError);
+      return false;
+    }
+
+    return true;
+  }
+
+  const { error: insertError } = await supabaseClient
+    .from('fan_profiles')
+    .insert(profile);
+
+  if (insertError) {
+    console.error('Profile creation failed:', insertError);
+    return false;
+  }
+
+  return true;
+}
       if (data && data.length) return true;
       const { error: insertError } = await supabaseClient.from('fan_profiles').insert({
         user_id: user.id,
