@@ -17,7 +17,42 @@
 <section class="wrap" id="updates"><div class="section-top"><div class="eyebrow">What's happening</div><h2>Community updates</h2><p>Messages shared by the community administrator.</p></div><div id="updateList" class="grid"><div class="card empty">No updates posted yet.</div></div></section>
 <section class="wrap" id="join"><div class="section-top"><div class="eyebrow">Become part of it</div><h2>Join the fan community.</h2><p>Create an account or sign in to access your private member area.</p></div><div class="card auth-invite"><p class="muted">Your fan account gives you a private place to manage your profile, membership requests and ticket enquiries.</p><div class="actions"><button class="btn" id="openSignupBtn" type="button" onclick="openAuthModal('suName')">Create an account</button><button class="btn btn-quiet" id="openLoginBtn" type="button" onclick="openAuthModal('loginEmail')">Sign in</button></div></div></section>
 <div class="auth-modal hidden" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authModalTitle"><div class="auth-modal-backdrop" data-close-auth></div><div class="auth-modal-box"><div class="row auth-modal-heading"><div><div class="eyebrow">Member access</div><h2 id="authModalTitle">Welcome to the community</h2></div><button class="modal-close" id="closeAuthBtn" type="button" onclick="closeAuthModal()" aria-label="Close">×</button></div><div class="two auth-modal-grid"><div class="card"><h3>Create your account</h3><div class="field"><label for="suName">Full name</label><input id="suName" maxlength="100" autocomplete="name"></div><div class="field"><label for="suDob">Date of birth</label><input id="suDob" type="date"></div><div class="field"><label for="suCountry">Country</label><input id="suCountry" maxlength="80" autocomplete="country-name"></div><div class="field"><label for="suGender">Gender</label><select id="suGender"><option value="">Prefer not to say</option><option>Female</option><option>Male</option><option>Other</option></select></div><div class="field"><label for="suPhone">Phone number</label><input id="suPhone" type="tel" maxlength="30" autocomplete="tel"></div><div class="field"><label for="suEmail">Email address</label><input id="suEmail" type="email" maxlength="254" autocomplete="email"></div><div class="field"><label for="suPassword">Password (at least 8 characters)</label><input id="suPassword" type="password" minlength="8" autocomplete="new-password"></div><button class="btn" id="signupBtn">Create account</button><p class="status" id="signupStatus" aria-live="polite"></p><p class="small">If email confirmation is enabled, confirm your email before logging in.</p></div><div class="card"><h3>Welcome back</h3><div class="field"><label for="loginEmail">Email address</label><input id="loginEmail" type="email" autocomplete="username"></div><div class="field"><label for="loginPassword">Password</label><input id="loginPassword" type="password" autocomplete="current-password"></div><button class="btn btn-quiet" id="loginBtn">Log in</button><p class="status" id="loginStatus" aria-live="polite"></p><div class="divider"></div><p class="muted">Sign in to view your profile, ticket requests and membership.</p></div></div></div></div>
-<section class="wrap hidden" id="memberArea"><div class="row"><div><div class="eyebrow">Private member space</div><h2>Your dashboard</h2><p class="muted" id="welcomeLine"></p></div><button class="btn btn-quiet" id="logoutBtn">Log out</button></div><div class="two" style="margin-top:18px"><div class="panel"><h3 class="subhead">Your profile</h3><div class="field"><label for="profileName">Full name</label><input id="profileName" maxlength="100"></div><div class="field"><label for="profileDob">Date of birth</label><input id="profileDob" type="date"></div><div class="field"><label for="profileCountry">Country</label><input id="profileCountry" maxlength="80"></div><div class="field"><label for="profileGender">Gender</label><select id="profileGender"><option value="">Prefer not to say</option><option>Female</option><option>Male</option><option>Other</option></select></div><div class="field"><label for="profilePhone">Phone</label><input id="profilePhone" type="tel" maxlength="30"></div><div class="field"><label>Email</label><input id="profileEmail" disabled></div><button class="btn" id="saveProfileBtn">Save profile</button><p class="status" id="profileStatus"></p></div><div class="panel"><h3 class="subhead">Request a ticket</h3><p class="muted">Submit an enquiry for review. It is not a confirmed booking until the administrator approves it.</p><div class="field"><label for="ticketHolder">Ticket holder name</label><input id="ticketHolder" maxlength="120"></div><div class="field"><label for="ticketEvent">Event / show title</label><input id="ticketEvent" maxlength="180" placeholder="Enter the show you are enquiring about"></div><div class="field"><label for="ticketVenue">Venue (optional)</label><input id="ticketVenue" maxlength="180"></div><div class="field"><label for="ticketDate">Event date (optional)</label><input id="ticketDate" type="date"></div><button class="btn" id="ticketBtn">Submit ticket request</button><p class="status" id="ticketStatus"></p></div></div><div class="two" style="margin-top:16px"><div class="panel"><h3 class="subhead">Your ticket requests</h3><div id="myTickets" class="empty">No ticket requests yet.</div></div><div class="panel"><h3 class="subhead">Request membership</h3><p class="muted">Request a community membership. A membership card and code appear only after approval. Any fee or benefit must be confirmed by the administrator before payment.</p><div class="field"><label for="memberType">Membership type</label><select id="memberType"><option value="Standard">Standard</option><option value="Premium">Premium (subject to confirmation)</option></select></div><div class="actions" style="flex-wrap:wrap"><a class="btn" id="membershipWhatsApp" href="https://wa.me/18199142934?text=Hello%2C%20I%20am%20interested%20in%20fan%20membership." target="_blank" rel="noopener">Continue on WhatsApp</a><a class="btn btn-quiet" id="membershipEmail" href="mailto:denisjones82@gmail.com?subject=Fan%20membership%20enquiry&body=Hello%2C%20I%20am%20interested%20in%20fan%20membership.%20Please%20send%20me%20the%20current%20membership%20details." target="_blank" rel="noopener">Send an email</a></div><p class="status" id="membershipStatus" aria-live="polite">Choose WhatsApp or email to contact management about membership. Confirm all fees and benefits directly before paying.</p><div class="divider"></div><h3 class="subhead">Your memberships</h3><div id="myMemberships" class="empty">No membership requests yet.</div></div></div></section>
+<section class="wrap hidden" id="memberArea"><div class="row"><div><div class="eyebrow">Private member space</div><h2>Your dashboard</h2><p class="muted" id="welcomeLine"></p></div><button class="btn btn-quiet" id="logoutBtn">Log out</button></div><div class="two" style="margin-top:18px"><div class="panel"><h3 class="subhead">Your profile</h3><div class="field"><label for="profileName">Full name</label><input id="profileName" maxlength="100"></div><div class="field"><label for="profileDob">Date of birth</label><input id="profileDob" type="date"></div><div class="field"><label for="profileCountry">Country</label><input id="profileCountry" maxlength="80"></div><div class="field"><label for="profileGender">Gender</label><select id="profileGender"><option value="">Prefer not to say</option><option>Female</option><option>Male</option><option>Other</option></select></div><div class="field"><label for="profilePhone">Phone</label><input id="profilePhone" type="tel" maxlength="30"></div><div class="field"><label>Email</label><input id="profileEmail" disabled></div><button class="btn" id="saveProfileBtn">Save profile</button><p class="status" id="profileStatus"></p></div><div class="panel"><h3 class="subhead">Request a ticket</h3><p class="muted">Submit an enquiry for review. It is not a confirmed booking until the administrator approves it.</p><div class="field"><label for="ticketHolder">Ticket holder name</label><input id="ticketHolder" maxlength="120"></div><div class="field"><label for="ticketEvent">Event / show title</label><input id="ticketEvent" maxlength="180" placeholder="Enter the show you are enquiring about"></div><div class="field"><label for="ticketVenue">Venue (optional)</label><input id="ticketVenue" maxlength="180"></div><div class="field"><label for="ticketDate">Event date (optional)</label><input id="ticketDate" type="date"></div><button class="btn" id="ticketBtn">Submit ticket request</button><p class="status" id="ticketStatus"></p></div></div><div class="two" style="margin-top:16px"><div class="panel"><h3 class="subhead">Your ticket requests</h3><div id="myTickets" class="empty">No ticket requests yet.</div></div><div class="panel">
+  <h3 class="subhead">Request membership</h3>
+
+  <p class="muted">
+    Request a community membership. A membership card and code appear only after approval. Any fee or benefit must be confirmed by the administrator before payment.
+  </p>
+
+  <div class="field">
+    <label for="memberType">Membership type</label>
+    <select id="memberType">
+      <option value="Standard">Standard</option>
+      <option value="Premium">Premium (subject to confirmation)</option>
+    </select>
+  </div>
+
+  <button class="btn" id="membershipBtn" type="button">
+    Submit membership request
+  </button>
+
+  <p class="status" id="membershipStatus" aria-live="polite"></p>
+
+  <div class="actions" style="flex-wrap:wrap">
+    <a class="btn" id="membershipWhatsApp" href="https://wa.me/18199142934?text=Hello%2C%20I%20am%20interested%20in%20fan%20membership." target="_blank" rel="noopener">
+      Continue on WhatsApp
+    </a>
+
+    <a class="btn btn-quiet" id="membershipEmail" href="mailto:denisjones82@gmail.com?subject=Fan%20membership%20enquiry&body=Hello%2C%20I%20am%20interested%20in%20fan%20membership.%20Please%20send%20me%20the%20current%20membership%20details." target="_blank" rel="noopener">
+      Send an email
+    </a>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3 class="subhead">Your memberships</h3>
+  <div id="myMemberships" class="empty">No membership requests yet.</div>
+</div></div></div></section>
 <section class="wrap hidden" id="adminLogin"><div class="panel" style="max-width:540px;margin:auto"><div class="eyebrow">Restricted access</div><h2>Administrator login</h2><div class="field"><label for="adminEmail">Admin email</label><input id="adminEmail" type="email" autocomplete="username"></div><div class="field"><label for="adminPassword">Admin password</label><input id="adminPassword" type="password" autocomplete="current-password"></div><button class="btn" id="adminLoginBtn">Log in as administrator</button><p class="status" id="adminLoginStatus"></p></div></section>
 <section class="wrap hidden" id="adminArea"><div class="row"><div><div class="eyebrow">Private management</div><h2>Administrator dashboard</h2><p class="muted">Manage public content, member records, ticket enquiries and membership requests.</p></div><button class="btn btn-danger" id="adminLogoutBtn">Admin log out</button></div>
 <div class="panel" style="margin-top:18px"><h3 class="subhead">Edit homepage</h3><div class="field"><label for="editHeadline">Headline</label><input id="editHeadline" maxlength="180"></div><div class="field"><label for="editIntro">Introduction</label><textarea id="editIntro" maxlength="600"></textarea></div><div class="field"><label for="editAboutTitle">About heading</label><input id="editAboutTitle" maxlength="120"></div><div class="field"><label for="editAboutText">About description</label><textarea id="editAboutText" maxlength="1000"></textarea></div><button class="btn" id="saveContentBtn">Save website content</button><p class="status" id="contentStatus"></p></div>
@@ -99,8 +134,46 @@ $('signupBtn').addEventListener('click',async()=>{const name=$('suName').value.t
 $('loginBtn').addEventListener('click',async()=>{const email=$('loginEmail').value.trim(),password=$('loginPassword').value;if(!email||!password){status('loginStatus','Enter your email and password.','error');return}busy('loginBtn',true,'Signing in…');try{const {data,error}=await client.auth.signInWithPassword({email,password});if(error)throw error;await refreshSession(data.user);status('loginStatus','You are signed in.','success');(admin()?'adminArea':'memberArea')&&$(admin()?'adminArea':'memberArea').scrollIntoView({behavior:'smooth'})}catch(e){status('loginStatus',e.message||'Login failed.','error')}finally{busy('loginBtn',false)}});
 $('saveProfileBtn').addEventListener('click',async()=>{if(!currentUser||admin())return;const patch={full_name:$('profileName').value.trim(),date_of_birth:$('profileDob').value||null,country:$('profileCountry').value.trim(),gender:$('profileGender').value,phone:$('profilePhone').value.trim()};if(!patch.full_name){status('profileStatus','Full name is required.','error');return}busy('saveProfileBtn',true,'Saving…');try{const {data,error}=await client.from('fan_profiles').update(patch).eq('user_id',currentUser.id).select('*').single();if(error)throw error;profileRow=data;$('welcomeLine').textContent='Welcome, '+(data.full_name||'member');status('profileStatus','Profile saved successfully.','success')}catch(e){status('profileStatus','Could not save profile: '+e.message,'error')}finally{busy('saveProfileBtn',false)}});
 $('ticketBtn').addEventListener('click',async()=>{if(!currentUser||admin())return;const holder=$('ticketHolder').value.trim()||profileRow?.full_name||'',event=$('ticketEvent').value.trim(),venue=$('ticketVenue').value.trim(),date=$('ticketDate').value;if(!holder||!event){status('ticketStatus','Enter the ticket holder name and event/show title.','error');return}busy('ticketBtn',true,'Submitting…');try{let inserted=null;for(let i=0;i<3;i++){const payload={user_id:currentUser.id,holder_name:holder,event_title:event,venue:venue||null,event_date:date||null,booking_code:code('REQ'),status:'pending'};const result=await client.from('fan_tickets').insert(payload).select('*').single();if(!result.error){inserted=result.data;break}if(!String(result.error.message||'').toLowerCase().includes('duplicate'))throw result.error}if(!inserted)throw new Error('Could not generate a unique request reference. Please try again.');$('ticketEvent').value='';$('ticketVenue').value='';$('ticketDate').value='';status('ticketStatus','Request submitted. It is pending administrator review; it is not a confirmed booking.','success');await loadMemberData()}catch(e){status('ticketStatus','Request failed: '+e.message,'error')}finally{busy('ticketBtn',false)}});
-// Membership enquiries are handled directly by management via WhatsApp or email.
-async function adminSetStatus(kind,id,next){if(!admin())return;const table=kind==='ticket'?'fan_tickets':'fan_memberships';let patch={status:next};if(kind==='membership'&&next==='active')patch.issued_at=new Date().toISOString();try{const {error}=await client.from(table).update(patch).eq('id',id);if(error)throw error;status('adminStatus',`${kind==='ticket'?'Ticket':'Membership'} status updated to ${next}.`,'success');await loadAdminData()}catch(e){status('adminStatus','Could not update record: '+e.message,'error')}}
+$('membershipBtn').addEventListener('click', async () => {
+  if (!currentUser || admin()) return;
+
+  const type = $('memberType').value;
+  const name = $('profileName').value.trim() ||
+    profileRow?.full_name ||
+    currentUser.user_metadata?.full_name ||
+    '';
+
+  if (!name) {
+    status('membershipStatus', 'Please complete your profile name first.', 'error');
+    return;
+  }
+
+  busy('membershipBtn', true, 'Submitting request…');
+  status('membershipStatus', 'Submitting your request…');
+
+  try {
+    const { error } = await client.from('fan_memberships').insert({
+      user_id: currentUser.id,
+      member_name: name,
+      membership_type: type,
+      status: 'pending'
+    });
+
+    if (error) throw error;
+
+    status(
+      'membershipStatus',
+      'Request submitted successfully! You can also contact management through WhatsApp or email.',
+      'success'
+    );
+
+    await loadMemberData();
+  } catch (e) {
+    status('membershipStatus', 'Request failed: ' + e.message, 'error');
+  } finally {
+    busy('membershipBtn', false);
+  }
+});async function adminSetStatus(kind,id,next){if(!admin())return;const table=kind==='ticket'?'fan_tickets':'fan_memberships';let patch={status:next};if(kind==='membership'&&next==='active')patch.issued_at=new Date().toISOString();try{const {error}=await client.from(table).update(patch).eq('id',id);if(error)throw error;status('adminStatus',`${kind==='ticket'?'Ticket':'Membership'} status updated to ${next}.`,'success');await loadAdminData()}catch(e){status('adminStatus','Could not update record: '+e.message,'error')}}
 $('adminLoginBtn').addEventListener('click',async()=>{const email=$('adminEmail').value.trim(),password=$('adminPassword').value;if(!email||!password){status('adminLoginStatus','Enter admin email and password.','error');return}busy('adminLoginBtn',true,'Checking access…');try{const {data,error}=await client.auth.signInWithPassword({email,password});if(error)throw error;if(data.user.id!==ADMIN_ID){await client.auth.signOut();throw new Error('This account is not authorised as administrator.')}await refreshSession(data.user);status('adminLoginStatus','Administrator access granted.','success');$('adminArea').scrollIntoView({behavior:'smooth'})}catch(e){status('adminLoginStatus',e.message||'Admin login failed.','error')}finally{busy('adminLoginBtn',false)}});
 $('adminLogoutBtn').addEventListener('click',async()=>{try{const {error}=await client.auth.signOut();if(error)throw error;await refreshSession(null);if(adminMode)$('adminLogin').classList.remove('hidden')}catch(e){status('adminStatus',e.message,'error')}});
 $('logoutBtn').addEventListener('click',async()=>{try{const {error}=await client.auth.signOut();if(error)throw error;await refreshSession(null);status('loginStatus','You have logged out.','success')}catch(e){status('loginStatus',e.message,'error')}});
